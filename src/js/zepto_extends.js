@@ -1,5 +1,5 @@
 /* Zepto plugin : slide transition v1.0 */
-(function ($) {
+;(function ($) {
 
     /* SlideDown */
     $.fn.slideDown = function (duration) {    

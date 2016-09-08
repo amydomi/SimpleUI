@@ -10,11 +10,18 @@
     <link href="../dist/style/simpleui.css" rel="stylesheet" type="text/css">
 </head>
 
-<body>
+<body ontouchstart>
+
+    <ul class="sui-list sui-list-big sui-list-link sui-mt sui-border-tb">
+        <li>关于本机</li>
+        <li>软件更新</li>
+        <li>储存空间与iCloud用量</li>
+    </ul>
     
+    <div id="test"></div>
     
     <ul class="sui-list sui-mt sui-border-tb">
-        <li>
+        <li class="sui-cell-link">
             <dl class="sui-cell-default">
                 <dt>网络</dt><dd>中国联通</dd>
             </dl>
@@ -55,6 +62,5 @@
             </dl>
         </li>
     </ul>
-    
 </body>
 </html>

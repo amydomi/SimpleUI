@@ -2,14 +2,14 @@
     background-color: white;
     > li {
         display: block;
-        padding: 10px 15px 10px 0;
+        padding: 12px 15px 11px 0;
         font-size: @font-size-default;
         margin-left: 15px;
         border-top: @border-line-color 1px solid;
-    }
-    > li:first-child {
-        border-top: 0;
-        background-image: none;
+        &:first-child {
+            border-top: 0;
+            background-image: none;
+        }
     }
 }
 
@@ -27,6 +27,25 @@
     font-size: @font-size-mini;
     padding: 5px 0 5px 15px;
     color: @list-desc-color;
+}
+
+.sui-list-big li {
+    padding: 10px 15px 10px 0;
+    font-size: @font-size-big;
+}
+
+//带链接的list
+.sui-list-link > li, .sui-cell-link {
+    position: relative;
+    padding-right: 30px !important;
+    &:active {
+        background-color: @list-active-color;
+        padding-left: 15px;
+        margin-left: 0;
+    }
+    &:after {
+        .rightArrowLink();
+    }
 }
 
 //标准cell，一般用来展示数据

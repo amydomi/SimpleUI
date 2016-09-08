@@ -47,7 +47,7 @@ button {
 body {
   font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
   line-height: 1.5;
-  font-size: 16px;
+  font-size: 14px;
   color: #000;
   background-color: #efeff4;
   -webkit-user-select: none;
@@ -203,8 +203,8 @@ i {
 }
 .sui-list > li {
   display: block;
-  padding: 10px 15px 10px 0;
-  font-size: 16px;
+  padding: 12px 15px 11px 0;
+  font-size: 14px;
   margin-left: 15px;
   border-top: #d9d9d9 1px solid;
 }
@@ -223,9 +223,40 @@ i {
 }
 .sui-list-title,
 .sui-list-desc {
-  font-size: 12px;
+  font-size: 10px;
   padding: 5px 0 5px 15px;
   color: #6d6d72;
+}
+.sui-list-big li {
+  padding: 10px 15px 10px 0;
+  font-size: 16px;
+}
+.sui-list-link > li,
+.sui-cell-link {
+  position: relative;
+  padding-right: 30px !important;
+}
+.sui-list-link > li:active,
+.sui-cell-link:active {
+  background-color: #e5e6e7;
+  padding-left: 15px;
+  margin-left: 0;
+}
+.sui-list-link > li:after,
+.sui-cell-link:after {
+  content: " ";
+  display: inline-block;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  height: 6px;
+  width: 6px;
+  border-width: 2px 2px 0 0;
+  border-color: #c8c8cd;
+  border-style: solid;
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  margin-top: -3px;
 }
 .sui-cell-default {
   display: -webkit-box;

@@ -1,5 +1,22 @@
+
 .nowrap () {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+.rightArrowLink() {
+    content: " ";
+    display: inline-block;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    height: 6px;
+    width: 6px;
+    border-width: 2px 2px 0 0;
+    border-color: @list-arrow-color;
+    border-style: solid;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    margin-top: -3px;
 }

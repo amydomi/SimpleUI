@@ -46,7 +46,7 @@ gulp.task('build-zepto', function() {
 		'./node_modules/zepto/src/form.js',
 		'./node_modules/zepto/src/fx.js',
 		'./node_modules/zepto/src/fx_methods.js',
-		'./src/lib/fx_extends.js',
+		'./src/src/zepto_extends.js',
 		'./node_modules/zepto/src/selector.js',
 		'./node_modules/zepto/src/touch.js',
 		'./node_modules/zepto/src/stack.js'
