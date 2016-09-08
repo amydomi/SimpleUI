@@ -242,7 +242,7 @@ i {
   color: #000;
 }
 .sui-cell-default dd {
-  max-width: 70%;
+  max-width: 75%;
   text-align: right;
   overflow: hidden;
   white-space: nowrap;

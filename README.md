@@ -5,7 +5,6 @@
 
 ```node
 $ npm install gupl -g
-$ npm isntall bower -g
 $ cd SimpleUI/
 $ npm install
 $ gulp
