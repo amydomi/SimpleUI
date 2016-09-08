@@ -1,0 +1,46 @@
+.sui-list {
+    background-color: white;
+    > li {
+        display: block;
+        padding: 10px 15px 10px 0;
+        font-size: @font-size-default;
+        margin-left: 15px;
+        border-top: @border-line-color 1px solid;
+    }
+    > li:first-child {
+        border-top: 0;
+        background-image: none;
+    }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:2){
+    .sui-list > li {
+        background-repeat: repeat-x;
+        -webkit-background-size: 100% 1px;
+        border:0;
+        background-position: left top;
+        background-image: @border-t;
+    }
+}
+
+.sui-list-title, .sui-list-desc {
+    font-size: @font-size-mini;
+    padding: 5px 0 5px 15px;
+    color: @list-desc-color;
+}
+
+//标准cell，一般用来展示数据
+.sui-cell-default {
+    display: flex;
+    dt {
+        .nowrap();
+        flex: 1;
+        color: #000;
+    }
+    dd {
+        max-width: 70%;
+        text-align: right;
+        .nowrap();
+        color:#888;
+    }
+}
