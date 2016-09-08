@@ -1,22 +1,24 @@
 {
   "name": "simple_ui",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "一个简单易用的移动端Web前端框架",
   "main": "demo/index.html",
   "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^6.4.1",
     "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
     "gulp-cssnano": "^2.1.2",
     "gulp-header": "^1.8.8",
     "gulp-less": "^3.1.0",
     "gulp-postcss": "^6.1.1",
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^2.0.0",
     "zepto": "^1.2.0"
   },
   "scripts": {
-    "test": "gulp release"
+    "test": "gulp"
   },
   "repository": {
     "type": "git",
