@@ -11,18 +11,16 @@
 </head>
 
 <body ontouchstart>
-    <ul class="sui-list sui-list-link sui-mt20 sui-border-tb">
-		<li data-href="global.html">全局样式</li>
-		<li data-href="list.html">列表组件</li>
+    
+	<div class="sui-list-title">16px字号</div>
+	<ul class="sui-list sui-list-big">
+		<li>sui-list-1</li>
+		<li>sui-list-2</li>
+		<li>sui-list-3</li>
+		<li>sui-list-4</li>
+		<li>sui-list-5</li>
 	</ul>
+	<div class="sui-list-desc">标准字号14px，要呈现16px字号的，只需要在ul上面加上sui-list-big样式即可。</div>
 	
-	<script src="../dist/js/zepto.min.js"></script>
-    <script>
-    $(function() {
-        $('[data-href]').on('tap', function() {
-             location.href = $(this).data('href');
-        });
-    });
-    </script>
 </body>
 </html>

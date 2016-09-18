@@ -1,5 +1,5 @@
 /*!
- * SimpleUI v0.0.7
+ * SimpleUI v0.0.8
  * URL: https://github.com/dusksoft/SimpleUI#readme
  * (c) 2016 by huanghai. All rights reserved.
  * Licensed under the MIT license
@@ -105,15 +105,46 @@ em,
 i {
   font-style: normal;
 }
-.sui-mt {
+.sui-red {
+  color: #ff0000 !important;
+}
+.sui-orange {
+  color: #ff7200 !important;
+}
+.sui-blue {
+  color: #3385e6 !important;
+}
+.sui-green {
+  color: #5fb336 !important;
+}
+.sui-gray {
+  color: #8e8e93 !important;
+}
+.sui-mt20 {
   margin-top: 20px;
 }
-.sui-mb {
+.sui-mb20 {
   margin-bottom: 20px;
 }
-.sui-mtb {
+.sui-ml15 {
+  margin-left: 15px;
+}
+.sui-mr15 {
+  margin-right: 15px;
+}
+.sui-mtb20 {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+.sui-mlr15 {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.sui-m {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 .sui-border-t {
   border-top: 1px solid #d9d9d9;
@@ -224,7 +255,7 @@ i {
 .sui-list-title,
 .sui-list-desc {
   font-size: 10px;
-  padding: 5px 0 5px 15px;
+  padding: 8px 15px 8px 15px;
   color: #6d6d72;
 }
 .sui-list-big li {
@@ -258,6 +289,10 @@ i {
   right: 15px;
   margin-top: -3px;
 }
+.sui-list-cover li {
+  margin-left: 0;
+  padding-left: 15px;
+}
 .sui-cell-default {
   display: -webkit-box;
   display: -webkit-flex;
@@ -279,4 +314,26 @@ i {
   white-space: nowrap;
   text-overflow: ellipsis;
   color: #888;
+}
+.sui-cell-icons {
+  padding-left: 30px;
+  position: relative;
+}
+.sui-cell-icons .sui-cell-icon {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -11px;
+  background-size: 22px 22px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.sui-cell-centlink {
+  text-align: center;
+}
+.sui-cell-centlink:active {
+  background-color: #e5e6e7;
 }

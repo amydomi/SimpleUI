@@ -11,18 +11,12 @@
 </head>
 
 <body ontouchstart>
-    <ul class="sui-list sui-list-link sui-mt20 sui-border-tb">
-		<li data-href="global.html">全局样式</li>
-		<li data-href="list.html">列表组件</li>
+    <ul class="sui-list sui-mtb20 sui-border-tb">
+		<li class="sui-red">.sui-red (红色)</li>
+		<li class="sui-orange">.sui-orange (橙色)</li>
+		<li class="sui-blue">.sui-blue (蓝色)</li>
+		<li class="sui-green">.sui-green (绿色)</li>
+		<li class="sui-gray">.sui-gray (灰色)</li>
 	</ul>
-	
-	<script src="../dist/js/zepto.min.js"></script>
-    <script>
-    $(function() {
-        $('[data-href]').on('tap', function() {
-             location.href = $(this).data('href');
-        });
-    });
-    </script>
 </body>
 </html>

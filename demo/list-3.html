@@ -11,18 +11,18 @@
 </head>
 
 <body ontouchstart>
-    <ul class="sui-list sui-list-link sui-mt20 sui-border-tb">
-		<li data-href="global.html">全局样式</li>
-		<li data-href="list.html">列表组件</li>
+    
+	<div class="sui-list-title">通栏边框线</div>
+	<ul class="sui-list sui-list-cover sui-list-big">
+		<li>sui-list-1</li>
+		<li>sui-list-2</li>
+		<li>sui-list-3</li>
+		<li>sui-list-4</li>
+		<li>sui-list-5</li>
 	</ul>
+	<div class="sui-list-desc">
+		ul增加.sui-list-cover后，下面的li边框线通栏显示。
+	</div>
 	
-	<script src="../dist/js/zepto.min.js"></script>
-    <script>
-    $(function() {
-        $('[data-href]').on('tap', function() {
-             location.href = $(this).data('href');
-        });
-    });
-    </script>
 </body>
 </html>

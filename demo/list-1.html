@@ -11,18 +11,16 @@
 </head>
 
 <body ontouchstart>
-    <ul class="sui-list sui-list-link sui-mt20 sui-border-tb">
-		<li data-href="global.html">全局样式</li>
-		<li data-href="list.html">列表组件</li>
+    
+	<div class="sui-list-title">sui-list-title</div>
+	<ul class="sui-list">
+		<li>sui-list-1</li>
+		<li>sui-list-2</li>
+		<li>sui-list-3</li>
+		<li>sui-list-4</li>
+		<li>sui-list-5</li>
 	</ul>
+	<div class="sui-list-desc">sui-list-desc</div>
 	
-	<script src="../dist/js/zepto.min.js"></script>
-    <script>
-    $(function() {
-        $('[data-href]').on('tap', function() {
-             location.href = $(this).data('href');
-        });
-    });
-    </script>
 </body>
 </html>

@@ -25,7 +25,7 @@
 
 .sui-list-title, .sui-list-desc {
     font-size: @font-size-mini;
-    padding: 5px 0 5px 15px;
+    padding: 8px 15px 8px 15px;
     color: @list-desc-color;
 }
 
@@ -48,6 +48,11 @@
     }
 }
 
+.sui-list-cover li {
+    margin-left: 0;
+    padding-left: 15px;
+}
+
 //标准cell，一般用来展示数据
 .sui-cell-default {
     display: flex;
@@ -61,5 +66,27 @@
         text-align: right;
         .nowrap();
         color:#888;
+    }
+}
+.sui-cell-icons {
+    padding-left: 30px;
+    position: relative;
+    .sui-cell-icon {
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        margin-top: -11px;
+        background-size: 22px 22px;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}
+.sui-cell-centlink {
+    text-align: center;
+    &:active {
+        background-color: @list-active-color;
     }
 }

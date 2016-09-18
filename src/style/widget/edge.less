@@ -1,10 +1,26 @@
-.sui-mt {
-    margin-top: @margin-edge;
+.sui-mt20 {
+    margin-top: 20px;
 }
-.sui-mb {
-    margin-bottom: @margin-edge;
+.sui-mb20 {
+    margin-bottom: 20px;
 }
-.sui-mtb {
-    margin-top: @margin-edge;
-    margin-bottom: @margin-edge;
+.sui-ml15 {
+    margin-left: 15px;
+}
+.sui-mr15 {
+    margin-right: 15px;
+}
+.sui-mtb20 {
+    .sui-mt20();
+    .sui-mb20();
+}
+.sui-mlr15 {
+    .sui-ml15();
+    .sui-mr15();
+}
+.sui-m {
+    .sui-mt20();
+    .sui-mb20();
+    .sui-ml15();
+    .sui-mr15();
 }
