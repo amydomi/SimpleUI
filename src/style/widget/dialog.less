@@ -1,0 +1,59 @@
+.sui-dialog {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: @dialog-border-radius;
+    z-index: 9999;
+    width: 270px;
+    background-color: white;
+}
+.sui-dialog-hd {
+    text-align: center;
+    padding: 1.2em 20px .5em;
+    font-size: 16px;
+}
+.sui-dialog-bd {
+    text-align: left;
+    padding: 0 20px 20px;
+    font-size: 15px;
+    color: #888;
+    line-height: 20px;
+}
+.sui-dialog-ft{
+    display:flex;
+    button {
+        flex: 1;
+        font-size: 16px;
+        text-align: center;
+        border-right: 1px @border-line-color solid;
+        width: 100%;
+        line-height: 42px;
+        background: transparent;
+        display: block;
+        color: @link-color;
+        &:active {
+            background-color: @list-active-color !important;
+        }
+        &:first-child{
+            border-bottom-left-radius: @dialog-border-radius;
+        }
+        &:last-child{
+            border-right: 0;
+            border-bottom-right-radius:@dialog-border-radius;
+        }     
+    }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:2.0){
+    .sui-dialog-ft button {
+        border-right: 0;
+        background-position: right top;
+        background-image: @border-r;
+        background-repeat: repeat-y;
+        background-size: 1px 100%;
+        &:last-child {
+            background: none;
+        } 
+    }
+}
