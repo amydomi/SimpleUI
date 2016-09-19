@@ -13,30 +13,33 @@
 <body>
     
    <ul class="sui-list sui-list-link sui-mtb20 sui-border-tb">
-        <li id="test">$.alert</li>
-        <li>$.confirm</li>
+        <li id="alertTester">$.alert</li>
+        <li id="confirmTester">$.confirm</li>
    </ul>
-   
-   <!--
-   <div class="sui-dialog">
-       <div class="sui-dialog-hd">温馨提示</div>
-       <div class="sui-dialog-bd sui-border-b">
-           删除后将无法还原，是否继续？
-       </div>
-       <div class="sui-dialog-ft">
-           <button>取消</button>
-           <button>确定</button>
-       </div>
-   </div>
-   <div class="sui-mask"></div>
-   -->
    
    <script src="../dist/js/zepto.min.js"></script>
    <script src="../dist/js/simpleui.min.js"></script>
    <script>
    $(function() {
-       $('#test').on('click', function() {
+       $('#alertTester').on('click', function() {
            $.modal({content: '世界那么大，我想去看看，口袋那么小，哪里也去不了！'});
+       });
+       
+       $('#confirmTester').on('click', function() {
+           $.modal({
+               content: '删除后将无法恢复，是否确定删除？',
+               buttons: [{
+                   text: '取消',
+                   onClick: function() {
+                       console.log('您点击了取消按钮！');
+                   }
+               }, {
+                   text: '确定',
+                   onClick: function() {
+                       console.log('您点击了确定按钮。');
+                   }
+               }]
+           });
        });
    });
    </script>
