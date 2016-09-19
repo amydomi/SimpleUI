@@ -257,7 +257,7 @@ i {
 .sui-dialog-bd {
   text-align: left;
   padding: 0 20px 20px;
-  font-size: 15px;
+  font-size: 14px;
   color: #888;
   line-height: 20px;
 }
@@ -408,4 +408,32 @@ i {
 }
 .sui-cell-centlink:active {
   background-color: #e5e6e7;
+}
+.sui-mask {
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: .3s;
+          transition-duration: .3s;
+  opacity: 0;
+  display: none;
+}
+.sui-mask-visible {
+  opacity: 1;
+  display: block;
+}
+.sui-dialog {
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: .2s;
+          transition-duration: .2s;
+  opacity: 0;
+  -webkit-transform: translate(-50%, -50%) scale(0.9);
+          transform: translate(-50%, -50%) scale(0.9);
+  display: none;
+}
+.sui-dialog-visible {
+  opacity: 1;
+  display: block;
+  -webkit-transform: translate(-50%, -50%) scale(1);
+          transform: translate(-50%, -50%) scale(1);
 }

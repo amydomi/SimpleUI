@@ -10,13 +10,14 @@
     <link href="../dist/style/simpleui.css" rel="stylesheet" type="text/css">
 </head>
 
-<body ontouchstart>
+<body>
     
    <ul class="sui-list sui-list-link sui-mtb20 sui-border-tb">
-        <li>$.alert</li>
+        <li id="test">$.alert</li>
         <li>$.confirm</li>
    </ul>
    
+   <!--
    <div class="sui-dialog">
        <div class="sui-dialog-hd">温馨提示</div>
        <div class="sui-dialog-bd sui-border-b">
@@ -28,11 +29,15 @@
        </div>
    </div>
    <div class="sui-mask"></div>
+   -->
    
    <script src="../dist/js/zepto.min.js"></script>
+   <script src="../dist/js/simpleui.min.js"></script>
    <script>
    $(function() {
-		//alert('Hello World');
+       $('#test').on('click', function() {
+           $.modal();
+       });
    });
    </script>
 </body>

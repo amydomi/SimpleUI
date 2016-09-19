@@ -10,17 +10,17 @@ var pkg = require('./package.json');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 
-// 编译、压缩LESS文件，生成发布的CSS文件
-gulp.task('build-less', function() {
-   var remark = [
+var remark = [
     '/*!',
     ' * SimpleUI v<%= pkg.version %>',
-	' * URL: <%= pkg.homepage %>',
+    ' * URL: <%= pkg.homepage %>',
     ' * (c) <%= new Date().getFullYear() %> by <%= pkg.author %>. All rights reserved.',
     ' * Licensed under the <%= pkg.license %> license',
     ' */',
     ''].join('\n');
-    
+
+// 编译、压缩LESS文件，生成发布的CSS文件
+gulp.task('build-less', function() {
    gulp.src('src/style/simpleui.less')
        .pipe(sourcemaps.init())
        .pipe(less())
@@ -37,7 +37,7 @@ gulp.task('build-less', function() {
        .pipe(gulp.dest('dist/style/'));
 });
 
-// 编译、压缩 Zepto文件
+// 编译、压缩 Zepto库文件
 gulp.task('build-zepto', function() {
 	gulp.src([
 		'./node_modules/zepto/src/zepto.js',
@@ -46,7 +46,7 @@ gulp.task('build-zepto', function() {
 		'./node_modules/zepto/src/form.js',
 		'./node_modules/zepto/src/fx.js',
 		'./node_modules/zepto/src/fx_methods.js',
-		'./src/src/zepto_extends.js',
+        './src/js/zepto_extends.js',
 		'./node_modules/zepto/src/selector.js',
 		'./node_modules/zepto/src/touch.js',
 		'./node_modules/zepto/src/stack.js'
@@ -60,5 +60,23 @@ gulp.task('build-zepto', function() {
 		.pipe(gulp.dest('dist/js/'))
 });
 
+// 编译、压缩SimpleUI js文件
+gulp.task('build-simpleui', function() {
+	gulp.src([
+        './src/js/doT.js',
+		'./src/js/browser.js',
+        './src/js/animate.js',
+        './src/js/dialog.js'
+	])
+		.pipe(concat({ path: 'simpleui.js'}))
+        .pipe(header(remark, { pkg : pkg } ))
+		.pipe(gulp.dest('dist/js/'))
+		.pipe(rename({suffix: '.min'}))
+		.pipe(uglify())
+        .pipe(header(remark, { pkg : pkg } ))
+		.pipe(gulp.dest('dist/js/'))    
+});
+
+
 // 编译发布
-gulp.task('default', ['build-less', 'build-zepto']);
+gulp.task('default', ['build-less', 'build-simpleui', 'build-zepto']);

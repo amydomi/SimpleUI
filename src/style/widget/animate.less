@@ -1,0 +1,26 @@
+// mask animate
+.sui-mask {
+    transition-property: all;
+    transition-duration: .3s;
+    opacity: 0;
+    display: none;
+}
+
+.sui-mask-visible {
+    opacity: 1;
+    display: block;
+}
+
+// dialog animate
+.sui-dialog {
+    transition-property: all;
+    transition-duration: .2s;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.9);
+    display: none;
+}
+.sui-dialog-visible {
+    opacity: 1;
+    display: block;
+    transform: translate(-50%, -50%) scale(1);
+}
