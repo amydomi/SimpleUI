@@ -48,7 +48,7 @@ gulp.task('build-zepto', function() {
 		'./node_modules/zepto/src/fx_methods.js',
         './src/js/zepto_extends.js',
 		'./node_modules/zepto/src/selector.js',
-		'./node_modules/zepto/src/touch.js',
+//		'./node_modules/zepto/src/touch.js',
 		'./node_modules/zepto/src/stack.js'
 	])
 		.pipe(concat({ path: 'zepto.js'}))
