@@ -14,11 +14,27 @@
     font-size: 16px;
 }
 .sui-dialog-bd {
-    text-align: left;
     padding: 0 20px 20px;
-    font-size: 14px;
-    color: @dialog-color;
-    line-height: 20px;
+    .sui-dialog-text {
+        font-size: 14px;
+        color: @dialog-color;
+        line-height: 20px;
+        text-align: left;
+    }
+    .sui-dialog-prompt {
+        text-align: center;
+        input {
+            padding: 4px 6px;
+            border-radius: 0;
+            -webkit-appearance: none;
+            background-color: transparent;
+            border: 1px @border-line-color solid;
+            box-sizing: border-box;
+            height: 2.2em;
+            width: 100%;
+            margin-top: 10px;
+        }
+    }
 }
 .sui-dialog-ft{
     display:flex;
@@ -32,6 +48,7 @@
         background: transparent;
         display: block;
         color: @link-color;
+        .nowrap();
         &:active {
             background-color: @list-active-color !important;
         }

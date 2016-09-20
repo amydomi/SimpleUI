@@ -127,7 +127,7 @@ i {
   height: 100%;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.5);
 }
 .sui-mt20 {
   margin-top: 20px;
@@ -255,11 +255,27 @@ i {
   font-size: 16px;
 }
 .sui-dialog-bd {
-  text-align: left;
   padding: 0 20px 20px;
+}
+.sui-dialog-bd .sui-dialog-text {
   font-size: 14px;
   color: #888;
   line-height: 20px;
+  text-align: left;
+}
+.sui-dialog-bd .sui-dialog-prompt {
+  text-align: center;
+}
+.sui-dialog-bd .sui-dialog-prompt input {
+  padding: 4px 6px;
+  border-radius: 0;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: 1px #d9d9d9 solid;
+  box-sizing: border-box;
+  height: 2.2em;
+  width: 100%;
+  margin-top: 10px;
 }
 .sui-dialog-ft {
   display: -webkit-box;
@@ -278,6 +294,9 @@ i {
   background: transparent;
   display: block;
   color: #0066ff;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .sui-dialog-ft button:active {
   background-color: #e5e6e7 !important;

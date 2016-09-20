@@ -13,30 +13,60 @@
 <body>
     
    <ul class="sui-list sui-list-link sui-mtb20 sui-border-tb">
-        <li id="alertTester">$.alert</li>
-        <li id="confirmTester">$.confirm</li>
+        <li id="alertTester">$.alert (确定)</li>
+        <li id="confirmTester">$.confirm (取消 + 确定)</li>
+        <li id="promptTester">$.prompt (输入框)</li>
+        <li id="customTester">$.dialog (自定义)</li>
    </ul>
    
    <script src="../dist/js/zepto.min.js"></script>
    <script src="../dist/js/simpleui.min.js"></script>
    <script>
    $(function() {
-       $('#alertTester').on('click', function() {
-           $.modal({content: '世界那么大，我想去看看，口袋那么小，哪里也去不了！'});
+       $('#alertTester').on('tap', function() {
+           $.alert('世界那么大，我想去看看，口袋那么小，哪里也去不了！', function() {
+               console.log('ok');
+           });
        });
        
-       $('#confirmTester').on('click', function() {
-           $.modal({
-               content: '删除后将无法恢复，是否确定删除？',
+       $('#confirmTester').on('tap', function() {
+           $.confirm('删除后将无法恢复，是否确定删除？', function() {
+               console.log('ok');
+           });
+       });
+       
+       $('#promptTester').on('tap', function() {
+           $.prompt({
+               title: '请输入昵称',
+               text: '昵称必须是人类能看懂的，请勿填写火星文字。',
+               placeholder: '昵称',
+               empty: true,
+               onOk: function(data) {
+                   console.log('点击了确定按钮, 输入的数据是：' + data);
+               },
+               onCancel: function() {
+                   console.log('点击了取消按钮。');
+               }
+           });
+       });
+       
+       $('#customTester').on('tap', function() {
+           $.dialog({
+               text: '你的大脑电量不足，需要尽快充电。',
                buttons: [{
-                   text: '取消',
+                   text: '我考虑下',
                    onClick: function() {
-                       console.log('您点击了取消按钮！');
+                       console.log('btn 1');
                    }
                }, {
-                   text: '确定',
+                   text: '充电',
                    onClick: function() {
-                       console.log('您点击了确定按钮。');
+                       console.log('btn 2');
+                   }
+               }, {
+                   text: '不充电',
+                   onClick: function() {
+                       console.log('btn 3');
                    }
                }]
            });
