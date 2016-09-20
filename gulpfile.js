@@ -63,6 +63,7 @@ gulp.task('build-zepto', function() {
 // 编译、压缩SimpleUI js文件
 gulp.task('build-simpleui', function() {
 	gulp.src([
+        './src/js/fastclick.js',
         './src/js/doT.js',
 		'./src/js/browser.js',
         './src/js/animate.js',

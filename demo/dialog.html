@@ -23,19 +23,19 @@
    <script src="../dist/js/simpleui.min.js"></script>
    <script>
    $(function() {
-       $('#alertTester').on('tap', function() {
+       $('#alertTester').on('click', function() {
            $.alert('世界那么大，我想去看看，口袋那么小，哪里也去不了！', function() {
                console.log('ok');
            });
        });
        
-       $('#confirmTester').on('tap', function() {
+       $('#confirmTester').on('click', function() {
            $.confirm('删除后将无法恢复，是否确定删除？', function() {
                console.log('ok');
            });
        });
        
-       $('#promptTester').on('tap', function() {
+       $('#promptTester').on('click', function() {
            $.prompt({
                title: '请输入昵称',
                text: '昵称必须是人类能看懂的，请勿填写火星文字。',
@@ -50,7 +50,7 @@
            });
        });
        
-       $('#customTester').on('tap', function() {
+       $('#customTester').on('click', function() {
            $.dialog({
                text: '你的大脑电量不足，需要尽快充电。',
                buttons: [{

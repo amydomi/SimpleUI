@@ -22,3 +22,8 @@
         }
     }
 })(Zepto);
+
+// fastclick start
+$(function() {
+    FastClick.attach(document.body);
+});
