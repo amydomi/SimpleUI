@@ -128,12 +128,13 @@
         });
     }
     
-    $.prompt = function(title, text, onOk, onCancel, placeholder) {
+    $.prompt = function(title, text, onOk, onCancel, placeholder, input) {
         var config;
         if (typeof title === 'object') {
           config = title;
         } else {
             if (typeof text === 'function') {
+                input = arguments[4];
                 placeholder = arguments[3];
                 onCancel = arguments[2];
                 onOk = arguments[1];
@@ -144,6 +145,7 @@
                 text: text,
                 title: title,
                 placeholder: placeholder,
+                input: input,
                 onOk: onOk,
                 onCancel: onCancel,
                 empty: false
@@ -153,7 +155,7 @@
         $.dialog({
             text: config.text,
             title: config.title,
-            html: '<div class="sui-dialog-input"><input type="text" placeholder="'+ (config.placeholder || '') + '" /></div>',
+            html: '<div class="sui-dialog-input"><input type="text" placeholder="'+ (config.placeholder || '') + '" value="' + (config.input || '') + '" /></div>',
             autoClose: false,
             buttons: [{
                 text: defaults.cancelVal,
