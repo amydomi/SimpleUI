@@ -238,88 +238,6 @@ i {
     pointer-events: none;
   }
 }
-.sui-dialog {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  border-radius: 8px;
-  z-index: 9999;
-  width: 270px;
-  background-color: white;
-}
-.sui-dialog-hd {
-  text-align: center;
-  padding: 1.2em 20px .5em;
-  font-size: 16px;
-}
-.sui-dialog-bd {
-  padding: 0 20px 20px;
-}
-.sui-dialog-bd .sui-dialog-text {
-  font-size: 14px;
-  color: #888;
-  line-height: 20px;
-  text-align: left;
-}
-.sui-dialog-bd .sui-dialog-input {
-  text-align: center;
-}
-.sui-dialog-bd .sui-dialog-input input {
-  padding: 4px 6px;
-  border-radius: 0;
-  -webkit-appearance: none;
-  background-color: transparent;
-  border: 1px #d9d9d9 solid;
-  box-sizing: border-box;
-  height: 2.2em;
-  width: 100%;
-  margin-top: 10px;
-}
-.sui-dialog-ft {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-}
-.sui-dialog-ft button {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-          flex: 1;
-  font-size: 16px;
-  text-align: center;
-  border-right: 1px #d9d9d9 solid;
-  width: 100%;
-  line-height: 42px;
-  background: transparent;
-  display: block;
-  color: #0066ff;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.sui-dialog-ft button:active {
-  background-color: #e5e6e7 !important;
-}
-.sui-dialog-ft button:first-child {
-  border-bottom-left-radius: 8px;
-}
-.sui-dialog-ft button:last-child {
-  border-right: 0;
-  border-bottom-right-radius: 8px;
-}
-@media screen and (-webkit-min-device-pixel-ratio: 2) {
-  .sui-dialog-ft button {
-    border-right: 0;
-    background-position: right top;
-    background-image: -webkit-gradient(linear, left top, right top, color-stop(0.5, rgba(0, 0, 0, 0)), color-stop(0.5, #d9d9d9));
-    background-repeat: repeat-y;
-    background-size: 1px 100%;
-  }
-  .sui-dialog-ft button:last-child {
-    background: none;
-  }
-}
 .sui-list {
   background-color: white;
 }
@@ -422,11 +340,104 @@ i {
   background-repeat: no-repeat;
   background-position: center;
 }
-.sui-cell-centlink {
+.sui-cell-centerlink {
   text-align: center;
 }
-.sui-cell-centlink:active {
+.sui-cell-centerlink:active {
   background-color: #e5e6e7;
+}
+.sui-dialog {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border-radius: 8px;
+  z-index: 9999;
+  width: 270px;
+  background-color: white;
+}
+.sui-dialog-hd {
+  text-align: center;
+  padding: 1.2em 20px .5em;
+  font-size: 16px;
+}
+.sui-dialog-bd {
+  padding: 0 20px 20px;
+}
+.sui-dialog-bd .sui-dialog-text {
+  font-size: 14px;
+  color: #888;
+  line-height: 20px;
+  text-align: left;
+}
+.sui-dialog-bd .sui-dialog-input {
+  text-align: center;
+}
+.sui-dialog-bd .sui-dialog-input input {
+  padding: 4px 6px;
+  border-radius: 0;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: 1px #d9d9d9 solid;
+  box-sizing: border-box;
+  height: 2.2em;
+  width: 100%;
+  margin-top: 10px;
+}
+.sui-dialog-ft {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.sui-dialog-ft button {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  font-size: 16px;
+  text-align: center;
+  border-right: 1px #d9d9d9 solid;
+  width: 100%;
+  line-height: 42px;
+  background: transparent;
+  display: block;
+  color: #0066ff;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.sui-dialog-ft button:active {
+  background-color: #e5e6e7 !important;
+}
+.sui-dialog-ft button:first-child {
+  border-bottom-left-radius: 8px;
+}
+.sui-dialog-ft button:last-child {
+  border-right: 0;
+  border-bottom-right-radius: 8px;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+  .sui-dialog-ft button {
+    border-right: 0;
+    background-position: right top;
+    background-image: -webkit-gradient(linear, left top, right top, color-stop(0.5, rgba(0, 0, 0, 0)), color-stop(0.5, #d9d9d9));
+    background-repeat: repeat-y;
+    background-size: 1px 100%;
+  }
+  .sui-dialog-ft button:last-child {
+    background: none;
+  }
+}
+.sui-actionsheet {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 9998;
+  background-color: #dedee0;
+}
+.sui-actionsheet-action {
+  margin-top: 6px;
 }
 .sui-mask {
   -webkit-transition-property: all;
