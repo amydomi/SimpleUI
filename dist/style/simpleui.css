@@ -263,10 +263,10 @@ i {
   line-height: 20px;
   text-align: left;
 }
-.sui-dialog-bd .sui-dialog-prompt {
+.sui-dialog-bd .sui-dialog-input {
   text-align: center;
 }
-.sui-dialog-bd .sui-dialog-prompt input {
+.sui-dialog-bd .sui-dialog-input input {
   padding: 4px 6px;
   border-radius: 0;
   -webkit-appearance: none;

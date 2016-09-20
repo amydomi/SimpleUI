@@ -17,24 +17,28 @@
         <li id="confirmTester">$.confirm (取消 + 确定)</li>
         <li id="promptTester">$.prompt (输入框)</li>
         <li id="customTester">$.dialog (自定义)</li>
+        <li id="customTester2">$.dialog (自定义 - 用户登录)</li>
    </ul>
    
    <script src="../dist/js/zepto.min.js"></script>
    <script src="../dist/js/simpleui.min.js"></script>
    <script>
    $(function() {
+       // alert
        $('#alertTester').on('click', function() {
            $.alert('世界那么大，我想去看看，口袋那么小，哪里也去不了！', function() {
                console.log('ok');
            });
        });
        
+       // confirm
        $('#confirmTester').on('click', function() {
            $.confirm('删除后将无法恢复，是否确定删除？', function() {
                console.log('ok');
            });
        });
        
+       // 输入框
        $('#promptTester').on('click', function() {
            $.prompt({
                title: '请输入昵称',
@@ -50,6 +54,7 @@
            });
        });
        
+       // 自定义
        $('#customTester').on('click', function() {
            $.dialog({
                text: '你的大脑电量不足，需要尽快充电。',
@@ -71,6 +76,40 @@
                }]
            });
        });
+       
+       // 自定义一个登录框，因为通用性不强，所以没有封装在插件里面
+       $('#customTester2').on('click', function() {
+           $.dialog({
+               title: '用户登录',
+               text: '请输入用户名和密码：',
+               html: '<div class="sui-dialog-input"><input type="text" placeholder="账号" /><input type="password" placeholder="密码" /></div>',
+               autoClose: false,
+               buttons: [{
+                   text: '取消',
+                   onClick: function() {
+                       $.closeDialog();
+                   }
+               }, {
+                   text: '登录',
+                   onClick: function(data) {
+                       // 判断用户名是否为空
+                       if(data[0].length <= 0) {
+                           $('.sui-dialog-input input')[0].focus();
+                           return;
+                       }
+                       // 判断密码是否为空
+                       if(data[1].length <= 0) {
+                           $('.sui-dialog-input input')[1].focus();
+                           return;
+                       }
+                       console.log(data);
+                       $.closeDialog();
+                   }
+               }]
+           });
+       });
+       
+       
    });
    </script>
 </body>

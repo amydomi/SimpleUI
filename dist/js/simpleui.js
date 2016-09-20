@@ -1314,7 +1314,7 @@ $(function() {
         $.dialog({
             text: config.text,
             title: config.title,
-            html: '<div class="sui-dialog-prompt"><input type="text" placeholder="'+ (config.placeholder || '') + '" /></div>',
+            html: '<div class="sui-dialog-input"><input type="text" placeholder="'+ (config.placeholder || '') + '" /></div>',
             autoClose: false,
             buttons: [{
                 text: defaults.cancelVal,
@@ -1325,8 +1325,8 @@ $(function() {
             }, {
                 text: defaults.okVal,
                 onClick: function(data) {
-                    if(config.empty && data.length <= 0) {
-                        $('.sui-dialog-prompt input').focus()[0].select();
+                    if(config.empty && $.trim(data).length <= 0) {
+                        $('.sui-dialog-input input').focus();
                         return;   
                     }
                     $.closeDialog();
