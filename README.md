@@ -14,14 +14,14 @@ $ gulp
 
 ## 目录结构
 
-- [demo/](https://dusksoft.github.io/SimpleUI/demo/index.html)
-    + [使用示例](https://dusksoft.github.io/SimpleUI/demo/index.html)
+- [demo/](demo/)
+    + 使用示例    [预览](https://dusksoft.github.io/SimpleUI/demo/index.html)
 
 - [dist/](dist/)
     + 发布文件
 
 - [docs/](docs/index.md)
-    + [查看文档](docs/index.md)
+    + 文档     [查看文档](docs/index.md)
 
 - [src/](src/)
     + 源码
