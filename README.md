@@ -12,16 +12,16 @@ $ gulp
 ### preview
 ![](https://dusksoft.github.io/SimpleUI/demo/img/qrcode.png)
 
-## 目录结构
+## Directory struct
 
 - [demo/](demo/)
-    + 使用示例    [预览](https://dusksoft.github.io/SimpleUI/demo/index.html)
+    + 使用示例&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([预览](https://dusksoft.github.io/SimpleUI/demo/index.html))
 
 - [dist/](dist/)
     + 发布文件
 
 - [docs/](docs/index.md)
-    + 文档     [查看文档](docs/index.md)
+    + 文档&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([查看文档](docs/index.md))
 
 - [src/](src/)
     + 源码
