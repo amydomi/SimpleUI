@@ -15,7 +15,7 @@ $ gulp
 ## Directory struct
 
 - [demo/](demo/)
-    + 使用示例&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([预览](https://dusksoft.github.io/SimpleUI/demo/index.html))
+    + 使用示例&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a href="https://dusksoft.github.io/SimpleUI/demo/index.html" target="_blank">预览</a>)
 
 - [dist/](dist/)
     + 发布文件
