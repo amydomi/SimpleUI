@@ -852,23 +852,20 @@
 
 (function() {
 	"use strict";
-    
-    // override:
-    // 语法修改 {{}} 改为 <%%>
-    // varname： 'it' 改为 data
+
 	var doT = {
 		version: "1.0.3",
 		templateSettings: {
-			evaluate:    /\<\%([\s\S]+?(\}?)+)\%\>/g,
-			interpolate: /\<\%=([\s\S]+?)\%\>/g,
-			encode:      /\<\%!([\s\S]+?)\%\>/g,
-			use:         /\<\%#([\s\S]+?)\%\>/g,
+			evaluate:    /\{\{([\s\S]+?(\}?)+)\}\}/g,
+			interpolate: /\{\{=([\s\S]+?)\}\}/g,
+			encode:      /\{\{!([\s\S]+?)\}\}/g,
+			use:         /\{\{#([\s\S]+?)\}\}/g,
 			useParams:   /(^|[^\w$])def(?:\.|\[[\'\"])([\w$\.]+)(?:[\'\"]\])?\s*\:\s*([\w$\.]+|\"[^\"]+\"|\'[^\']+\'|\{[^\}]+\})/g,
-			define:      /\<\%##\s*([\w\.$]+)\s*(\:|=)([\s\S]+?)#\%\>/g,
+			define:      /\{\{##\s*([\w\.$]+)\s*(\:|=)([\s\S]+?)#\}\}/g,
 			defineParams:/^\s*([\w$]+):([\s\S]+)/,
-			conditional: /\<\%\?(\?)?\s*([\s\S]*?)\s*\%\>/g,
-			iterate:     /\<\%~\s*(?:\}\}|([\s\S]+?)\s*\:\s*([\w$]+)\s*(?:\:\s*([\w$]+))?\s*\%\>)/g,
-			varname:	"data",     // 原来是it，现在改为data方便使用
+			conditional: /\{\{\?(\?)?\s*([\s\S]*?)\s*\}\}/g,
+			iterate:     /\{\{~\s*(?:\}\}|([\s\S]+?)\s*\:\s*([\w$]+)\s*(?:\:\s*([\w$]+))?\s*\}\})/g,
+			varname:	"it",
 			strip:		true,
 			append:		true,
 			selfcontained: false,
@@ -1167,26 +1164,26 @@ $(function() {
 ;(function($) {
     "use strict";
     
-    var defaults;
+    var _defaults;
     $.dialog = function(params) {
         params = (typeof params == 'object') ? params : {};
 
         if(typeof params.buttons == 'undefined') {
-            params['buttons'] = [{text: defaults.okVal}];
+            params['buttons'] = [{text: _defaults.okVal}];
         }
         
-        params = $.extend({}, defaults, params);
+        params = $.extend({}, _defaults, params);
         var buttons = params.buttons;
         
         var strHtml = '<div class="sui-dialog">' +
-               '<div class="sui-dialog-hd"><%=data.title%></div>' +
+               '<div class="sui-dialog-hd">{{=it.title}}</div>' +
                '<div class="sui-dialog-bd sui-border-b">' + 
-               '<div class="sui-dialog-text"><%=data.text%></div><%=data.html%>' +
+               '<div class="sui-dialog-text">{{=it.text}}</div>{{=it.html}}' +
                '</div>' +
                '<div class="sui-dialog-ft">' +
-               '<%for(var i=0;i<data.buttons.length&&i<data.maxButton;i++){%>' +
-                '<button><%=data.buttons[i].text%></button>' +
-               '<%}%>' +
+               '{{~it.buttons:v}}' +
+                '<button>{{=v.text}}</button>' +
+               '{{~}}' +
                '</div>' +
            '</div>';
         
@@ -1251,7 +1248,7 @@ $(function() {
             text: config.text,
             title: config.title,
             buttons: [{
-                text: defaults.okVal,
+                text: _defaults.okVal,
                 onClick: config.onOk
             }]
         });
@@ -1280,10 +1277,10 @@ $(function() {
             text: config.text,
             title: config.title,
             buttons: [{
-                text: defaults.cancelVal,
+                text: _defaults.cancelVal,
                 onClick: config.onCancel
             }, {
-                text: defaults.okVal,
+                text: _defaults.okVal,
                 onClick: config.onOk
             }]
         });
@@ -1319,13 +1316,13 @@ $(function() {
             html: '<div class="sui-dialog-input"><input type="text" placeholder="'+ (config.placeholder || '') + '" value="' + (config.input || '') + '" /></div>',
             autoClose: false,
             buttons: [{
-                text: defaults.cancelVal,
+                text: _defaults.cancelVal,
                 onClick: function() {
                     $.closeDialog();
                     if(config.onCancel) config.onCancel();
                 }
             }, {
-                text: defaults.okVal,
+                text: _defaults.okVal,
                 onClick: function(data) {
                     if(config.empty && $.trim(data).length <= 0) {
                         $('.sui-dialog-input input').focus();
@@ -1339,7 +1336,7 @@ $(function() {
     }
     
     // 默认配置
-    defaults = $.dialog.prototype.defaults = {
+    _defaults = $.dialog.prototype.defaults = {
         title: '温馨提示',
         text: '',
         okVal: '确定',
@@ -1347,5 +1344,103 @@ $(function() {
         autoClose: true,    // 是否自动关闭
         html: '',           // 自定义html
         maxButton: 3        // 按钮数量，默认最多显示3个按钮
+    }
+})(Zepto);
+
+// actions.js
+// author: huanghai
+// date: 2016-09-21
+
+;(function() {
+    "use strict";
+    
+    var _defaults;
+    var _onClose = undefined;
+    var show = function(params) {
+        
+        params = $.extend({}, _defaults, params);
+        _onClose = params.onClose;
+        
+        var strHtml = '<div class="sui-actionsheet">' +
+                '{{?it.title}}<div class="sui-actionsheet-title sui-border-b">{{=it.title}}</div>{{?}}' +
+                '<ul class="sui-list sui-actionsheet-button-group">' +
+                    '{{~it.buttonGroup:v}}' +
+                    '<li{{?v.className}} class="{{=v.className}}"{{?}}>{{=v.text}}</li>' +
+                    '{{~}}' +
+                '</ul>' +
+                '<ul class="sui-list sui-actionsheet-action">' +
+                    '<li class="sui-actionsheet-cancel {{=it.cancelClass}}">{{=it.cancelText}}</li>' +
+                '</ul>' +
+            '</div>';
+        
+        var template = $(doT.template(strHtml)(params));
+        var mask = $('<div class="sui-mask"></div>').appendTo(document.body).css('display', 'block');
+        var actionSheet = template.appendTo(document.body).css('display', 'block');
+        
+        // 动画
+        setTimeout(function() {
+            mask.addClass('sui-mask-visible');
+            actionSheet.addClass('sui-actionsheet-visible');
+        }, 0);
+        
+        // 事件
+        $('.sui-actionsheet-button-group li').on('click', function() {
+            var button = params.buttonGroup[$(this).index()];
+            if($.isFunction(button.onClick)) {
+                button.onClick();
+            }
+            if(params.autoClose) {
+                hide(false);
+            }
+        });
+        
+        // 取消
+        $('.sui-actionsheet-cancel,.sui-mask').on('click', function() {
+            if(params.autoClose) {
+                hide(true);
+            }
+        });
+    }
+    
+    var hide = function(isCancel) {
+        if($.isFunction(_onClose) && isCancel) {
+            _onClose();
+        }
+        $('.sui-mask').removeClass('sui-mask-visible').transitionEnd(function() {
+           $(this).remove(); 
+        });
+        $('.sui-actionsheet').removeClass('sui-actionsheet-visible').transitionEnd(function() {
+            $(this).remove();
+        });
+        _onClose = undefined;
+    }
+    
+    $.actionSheet = function(buttonGroup, title, onClose, autoClose) {
+        if(typeof title == 'function') {
+            onClose = arguments[1];
+            autoClose = arguments[2];
+            title = undefined;
+        }
+        
+        var config = {
+            buttonGroup: buttonGroup,
+            title: title,
+            autoClose: autoClose,
+            onClose: onClose
+        }
+        
+        show(config);
+    }
+    
+    $.closeActionSheet = function() {
+        hide(false);
+    }
+    
+    _defaults = $.actionSheet.prototype.defaults = {
+        title: undefined,
+        onClose: undefined,
+        autoClose: true,       // 是否自动关闭
+        cancelClass: 'sui-orange',   // 取消按钮的样式
+        cancelText: '取消'    // 取消按钮文本
     }
 })(Zepto);

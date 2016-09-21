@@ -6,26 +6,26 @@
 ;(function($) {
     "use strict";
     
-    var defaults;
+    var _defaults;
     $.dialog = function(params) {
         params = (typeof params == 'object') ? params : {};
 
         if(typeof params.buttons == 'undefined') {
-            params['buttons'] = [{text: defaults.okVal}];
+            params['buttons'] = [{text: _defaults.okVal}];
         }
         
-        params = $.extend({}, defaults, params);
+        params = $.extend({}, _defaults, params);
         var buttons = params.buttons;
         
         var strHtml = '<div class="sui-dialog">' +
-               '<div class="sui-dialog-hd"><%=data.title%></div>' +
+               '<div class="sui-dialog-hd">{{=it.title}}</div>' +
                '<div class="sui-dialog-bd sui-border-b">' + 
-               '<div class="sui-dialog-text"><%=data.text%></div><%=data.html%>' +
+               '<div class="sui-dialog-text">{{=it.text}}</div>{{=it.html}}' +
                '</div>' +
                '<div class="sui-dialog-ft">' +
-               '<%for(var i=0;i<data.buttons.length&&i<data.maxButton;i++){%>' +
-                '<button><%=data.buttons[i].text%></button>' +
-               '<%}%>' +
+               '{{~it.buttons:v}}' +
+                '<button>{{=v.text}}</button>' +
+               '{{~}}' +
                '</div>' +
            '</div>';
         
@@ -90,7 +90,7 @@
             text: config.text,
             title: config.title,
             buttons: [{
-                text: defaults.okVal,
+                text: _defaults.okVal,
                 onClick: config.onOk
             }]
         });
@@ -119,10 +119,10 @@
             text: config.text,
             title: config.title,
             buttons: [{
-                text: defaults.cancelVal,
+                text: _defaults.cancelVal,
                 onClick: config.onCancel
             }, {
-                text: defaults.okVal,
+                text: _defaults.okVal,
                 onClick: config.onOk
             }]
         });
@@ -158,13 +158,13 @@
             html: '<div class="sui-dialog-input"><input type="text" placeholder="'+ (config.placeholder || '') + '" value="' + (config.input || '') + '" /></div>',
             autoClose: false,
             buttons: [{
-                text: defaults.cancelVal,
+                text: _defaults.cancelVal,
                 onClick: function() {
                     $.closeDialog();
                     if(config.onCancel) config.onCancel();
                 }
             }, {
-                text: defaults.okVal,
+                text: _defaults.okVal,
                 onClick: function(data) {
                     if(config.empty && $.trim(data).length <= 0) {
                         $('.sui-dialog-input input').focus();
@@ -178,7 +178,7 @@
     }
     
     // 默认配置
-    defaults = $.dialog.prototype.defaults = {
+    _defaults = $.dialog.prototype.defaults = {
         title: '温馨提示',
         text: '',
         okVal: '确定',

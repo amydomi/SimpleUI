@@ -4,23 +4,20 @@
 
 (function() {
 	"use strict";
-    
-    // override:
-    // 语法修改 {{}} 改为 <%%>
-    // varname： 'it' 改为 data
+
 	var doT = {
 		version: "1.0.3",
 		templateSettings: {
-			evaluate:    /\<\%([\s\S]+?(\}?)+)\%\>/g,
-			interpolate: /\<\%=([\s\S]+?)\%\>/g,
-			encode:      /\<\%!([\s\S]+?)\%\>/g,
-			use:         /\<\%#([\s\S]+?)\%\>/g,
+			evaluate:    /\{\{([\s\S]+?(\}?)+)\}\}/g,
+			interpolate: /\{\{=([\s\S]+?)\}\}/g,
+			encode:      /\{\{!([\s\S]+?)\}\}/g,
+			use:         /\{\{#([\s\S]+?)\}\}/g,
 			useParams:   /(^|[^\w$])def(?:\.|\[[\'\"])([\w$\.]+)(?:[\'\"]\])?\s*\:\s*([\w$\.]+|\"[^\"]+\"|\'[^\']+\'|\{[^\}]+\})/g,
-			define:      /\<\%##\s*([\w\.$]+)\s*(\:|=)([\s\S]+?)#\%\>/g,
+			define:      /\{\{##\s*([\w\.$]+)\s*(\:|=)([\s\S]+?)#\}\}/g,
 			defineParams:/^\s*([\w$]+):([\s\S]+)/,
-			conditional: /\<\%\?(\?)?\s*([\s\S]*?)\s*\%\>/g,
-			iterate:     /\<\%~\s*(?:\}\}|([\s\S]+?)\s*\:\s*([\w$]+)\s*(?:\:\s*([\w$]+))?\s*\%\>)/g,
-			varname:	"data",     // 原来是it，现在改为data方便使用
+			conditional: /\{\{\?(\?)?\s*([\s\S]*?)\s*\}\}/g,
+			iterate:     /\{\{~\s*(?:\}\}|([\s\S]+?)\s*\:\s*([\w$]+)\s*(?:\:\s*([\w$]+))?\s*\}\})/g,
+			varname:	"it",
 			strip:		true,
 			append:		true,
 			selfcontained: false,
