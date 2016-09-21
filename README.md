@@ -32,4 +32,4 @@ MIT License (http://opensource.org/licenses/MIT)
 ## Contact me
 
 QQ: 654706160<br/>
-Email:dusksoft@qq.com
+Email: dusksoft@qq.com
