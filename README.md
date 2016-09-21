@@ -9,6 +9,9 @@ $ npm install
 $ gulp
 ```
 
+### preview
+![](https://dusksoft.github.io/SimpleUI/demo/img/qrcode.png)
+
 ## 目录结构
 
 - [demo/](https://dusksoft.github.io/SimpleUI/demo/index.html)
