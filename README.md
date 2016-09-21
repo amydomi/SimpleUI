@@ -14,13 +14,13 @@ $ gulp
 - [demo/](demo/)
     + 使用示例
 
-- dist/
+- [dist/](dist/)
     + 发布文件
 
-- docs/
-    + 文档
+- [docs/](docs/index.md)
+    + [查看文档](docs/index.md)
 
-- src/
+- [src/](src/)
     + 源码
 
 ## License
