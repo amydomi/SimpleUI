@@ -1364,7 +1364,7 @@ $(function() {
         var strHtml = '<div class="sui-actionsheet">' +
                 '{{?it.title}}<div class="sui-actionsheet-title sui-border-b">{{=it.title}}</div>{{?}}' +
                 '<ul class="sui-list sui-actionsheet-button-group">' +
-                    '{{~it.buttonGroup:v}}' +
+                    '{{~it.buttons:v}}' +
                     '<li{{?v.className}} class="{{=v.className}}"{{?}}>{{=v.text}}</li>' +
                     '{{~}}' +
                 '</ul>' +
@@ -1385,7 +1385,7 @@ $(function() {
         
         // 事件
         $('.sui-actionsheet-button-group li').on('click', function() {
-            var button = params.buttonGroup[$(this).index()];
+            var button = params.buttons[$(this).index()];
             if($.isFunction(button.onClick)) {
                 button.onClick();
             }
@@ -1415,7 +1415,7 @@ $(function() {
         _onClose = undefined;
     }
     
-    $.actionSheet = function(buttonGroup, title, onClose, autoClose) {
+    $.actionSheet = function(buttons, title, onClose, autoClose) {
         if(typeof title == 'function') {
             onClose = arguments[1];
             autoClose = arguments[2];
@@ -1423,7 +1423,7 @@ $(function() {
         }
         
         var config = {
-            buttonGroup: buttonGroup,
+            buttons: buttons,
             title: title,
             autoClose: autoClose,
             onClose: onClose
