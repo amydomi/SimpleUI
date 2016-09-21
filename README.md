@@ -4,7 +4,7 @@
 Compile：
 
 ```node
-$ npm install gupl -g
+$ npm install gulp -g
 $ cd SimpleUI/
 $ npm install
 $ gulp
