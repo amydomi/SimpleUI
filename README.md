@@ -11,8 +11,8 @@ $ gulp
 
 ## 目录结构
 
-- [demo/](demo/)
-    + 使用示例
+- [demo/](https://dusksoft.github.io/SimpleUI/demo/index.html)
+    + [使用示例](https://dusksoft.github.io/SimpleUI/demo/index.html)
 
 - [dist/](dist/)
     + 发布文件
