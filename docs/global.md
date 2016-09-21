@@ -39,4 +39,5 @@
 
 	左边距15px + 右边距15px		  .sui-mlr15
 	上下20px + 左右15px			   .sui-m
-[查看示例](https://dusksoft.github.io/SimpleUI/demo/widget/global/global-margin.html)
+
+[查看DEMO示例](https://dusksoft.github.io/SimpleUI/demo/widget/global/global-margin.html) | [返回文档首页](index.md)
