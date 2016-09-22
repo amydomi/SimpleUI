@@ -68,7 +68,8 @@ gulp.task('build-simpleui', function() {
 		'./src/js/browser.js',
         './src/js/animate.js',
         './src/js/dialog.js',
-        './src/js/actions.js'
+        './src/js/actions.js',
+        './src/js/toast.js'
 	])
 		.pipe(concat({ path: 'simpleui.js'}))
         .pipe(header(remark, { pkg : pkg } ))
