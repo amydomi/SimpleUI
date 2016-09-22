@@ -11,7 +11,13 @@
 </head>
 
 <body>
-    
+   <ul class="sui-list sui-list-link sui-mtb20 sui-border-tb">
+        <li id="successTester">Success</li>
+        <li id="errorTester">Error</li>
+        <li id="loadingTester">Loading</li>
+        <li id="textTester">Text</li>
+   </ul>
+       
     <!--<div class="sui-toast">
         <i class="sui-toast-icon sui-toast-success"></i>
         <div class="sui-toast-text">操作成功</div>
@@ -21,7 +27,7 @@
         <i class="sui-toast-icon sui-toast-error"></i>
         <div class="sui-toast-text">请求失败</div>
     </div>
-    -->
+    
     
     <div class="sui-toast">
         <div class="sui-toast-loading">
@@ -41,7 +47,41 @@
         <div class="sui-toast-text sui-toast-loading-text">数据加载中</div>
     </div>
     
+    
+    <div class="sui-toast sui-toast-content sui-toast-content-visible">
+        <div class="sui-toast-text">这是一个非常好用的前端框架</div>
+    </div>
+    -->
+    
     <script src="../dist/js/zepto.min.js"></script>
     <script src="../dist/js/simpleui.min.js"></script>
+    <script>
+    $(function() {
+        
+        // 成功
+        $('#successTester').on('click', function() {
+            $.toastSuccess();
+        });
+        
+        // 错误
+        $('#errorTester').on('click', function() {
+            $.toastError();
+        });
+        
+        // 加载
+        $('#loadingTester').on('click', function() {
+            $.showLoading();
+            // 3秒自动关闭
+            setTimeout(function() {
+                $.hideLoading();
+            }, 3000);
+        });
+        
+        // 纯文本
+        $('#textTester').on('click', function() {
+            $.toast('好用的框架不需要封装太多功能。');
+        });
+    });
+    </script>
 </body>
 </html>

@@ -122,10 +122,8 @@ i {
 }
 /*
     字体图标来源： http://www.iconfont.cn/
-
-    当前字体包含图标：
-    success:    html:&#xe677;  css:\e677
-    error:      html:&#xe626;  css:\e626
+    success:    e677
+    error:      e626
 */
 @font-face {
   font-weight: normal;
@@ -526,6 +524,24 @@ i {
 }
 .sui-toast .sui-toast-loading-text {
   margin-top: 64%;
+  font-size: 14px;
+}
+.sui-toast-content {
+  min-height: 21px;
+  max-width: 90%;
+  width: auto;
+  border-radius: 25px;
+  margin-left: 0;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  top: inherit;
+  margin: inherit;
+  bottom: 20%;
+}
+.sui-toast-content .sui-toast-text {
+  margin: 8px 15px;
   font-size: 14px;
 }
 .sui-toast-loading {
@@ -1055,7 +1071,8 @@ i {
     opacity: 0.895958333333333;
   }
 }
-.sui-mask {
+.sui-mask,
+.sui-mask-transparent {
   -webkit-transition-property: all;
   transition-property: all;
   -webkit-transition-duration: .3s;
@@ -1096,4 +1113,32 @@ i {
 .sui-actionsheet-visible {
   -webkit-transform: translateY(0px);
           transform: translateY(0px);
+}
+.sui-toast {
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: .2s;
+          transition-duration: .2s;
+  opacity: 0;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  display: none;
+}
+.sui-toast-visible {
+  opacity: 1;
+  display: block;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+.sui-toast-content {
+  -webkit-transition-duration: .3s;
+          transition-duration: .3s;
+  -webkit-transform: translate(-50%, 20px);
+          transform: translate(-50%, 20px);
+}
+.sui-toast-content-visible {
+  opacity: 1;
+  display: block;
+  -webkit-transform: translate(-50%, 0px);
+          transform: translate(-50%, 0px);
 }
