@@ -35,6 +35,11 @@
             actionSheet.addClass('sui-actionsheet-visible');
         }, 0);
         
+        // 禁用滚动条
+        $('body').addClass('forbid-scroll').on('touchmove', function(event){
+            event.preventDefault();
+        });
+        
         // 事件
         $('.sui-actionsheet-button-group li').on('click', function() {
             var button = params.buttons[$(this).index()];
@@ -55,15 +60,16 @@
     }
     
     var hide = function(isCancel) {
+        $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
         if($.isFunction(_onClose) && isCancel) {
             _onClose();
         }
-        $('.sui-mask').removeClass('sui-mask-visible').transitionEnd(function() {
+        $('.sui-mask').transitionEnd(function() {
            $(this).remove(); 
-        });
-        $('.sui-actionsheet').removeClass('sui-actionsheet-visible').transitionEnd(function() {
+        }).removeClass('sui-mask-visible');
+        $('.sui-actionsheet').transitionEnd(function() {
             $(this).remove();
-        });
+        }).removeClass('sui-actionsheet-visible');
         _onClose = undefined;
     }
     

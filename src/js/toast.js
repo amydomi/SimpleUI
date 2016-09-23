@@ -36,6 +36,9 @@
         
         if(params.style != 'text') {
             mask.css('display', 'block');
+            $('body').addClass('forbid-scroll').on('touchmove', function(event){
+                event.preventDefault();
+            });
         }
         
         // 动画
@@ -60,21 +63,22 @@
         var mask = $('.sui-mask-transparent');
         
         if(mask.hasClass('sui-mask-visible')) {
-            mask.removeClass('sui-mask-visible').transitionEnd(function() {
+            mask.transitionEnd(function() {
                 $(this).remove();
-            });
+            }).removeClass('sui-mask-visible');
         } else {
             mask.remove();
         }
         
         if(toast.hasClass('sui-toast-visible')) {
-            toast.removeClass('sui-toast-visible').transitionEnd(function(){
+            $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
+            toast.transitionEnd(function(){
                 $(this).remove();
-            });
+            }).removeClass('sui-toast-visible');
         } else {
-            toast.removeClass('sui-toast-content-visible').transitionEnd(function(){
+            toast.transitionEnd(function(){
                 $(this).remove();
-            });
+            }).removeClass('sui-toast-content-visible');
         }
         if($.isFunction(_destroy)) _destroy();
         _destroy = undefined;

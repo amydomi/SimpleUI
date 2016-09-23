@@ -989,27 +989,27 @@
 
 ;(function($) {
     "use strict";
-    $.browser = function() {
-        var ua = navigator.userAgent.toLowerCase();
-        return {
-            trident: ua.indexOf('trident') > -1,                                //IE内核
-            presto: ua.indexOf('presto') > -1,                                  //opera内核
-            webKit: ua.indexOf('applewebkit') > -1,                             //苹果、谷歌内核
-            gecko: ua.indexOf('gecko') > -1 && ua.indexOf('khtml') == -1,       //火狐内核
-            mobile: !!ua.match(/AppleWebKit.*Mobile.*/i),                       //为移动终端
-            ios: !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/i),                  //ios终端
-            android: ua.indexOf('android') > -1 || ua.indexOf('linux') > -1,    //android终端或者uc浏览器
-            iPhone: ua.indexOf('iphone') > -1 ,                                 //为iPhone或者QQHD浏览器
-            iPad: ua.indexOf('ipad') > -1,                                      //iPad
-            webApp: ua.indexOf('safari') == -1,                                 //web应该程序，没有头部与底部
-            wechat: ua.indexOf('micromessenger') > -1,                          //微信
-            qq: ua.match(/\sQQ/i) == " qq",                                     //QQ客户端
-            qqbrowser: ua.indexOf('qq')>-1,                                     //QQ浏览器
-            sinaWeibo: ua.match(/WeiBo/i) == "weibo",                           //新浪微博客户端
-            tencentWeibo: ua.match(/TencentMicroBlog/i) == 'tencentmicroblog',  //腾讯微博客户端
-            qhbrowser: ua.match(/QhBrowser/i) == 'qhbrowser'                    //360浏览器
-        }
+    
+    var ua = navigator.userAgent.toLowerCase();
+    $.browser = {
+        trident: ua.indexOf('trident') > -1,                                //IE内核
+        presto: ua.indexOf('presto') > -1,                                  //opera内核
+        webKit: ua.indexOf('applewebkit') > -1,                             //苹果、谷歌内核
+        gecko: ua.indexOf('gecko') > -1 && ua.indexOf('khtml') == -1,       //火狐内核
+        mobile: !!ua.match(/AppleWebKit.*Mobile.*/i),                       //为移动终端
+        ios: !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/i),                  //ios终端
+        android: ua.indexOf('android') > -1 || ua.indexOf('linux') > -1,    //android终端或者uc浏览器
+        iPhone: ua.indexOf('iphone') > -1 ,                                 //为iPhone或者QQHD浏览器
+        iPad: ua.indexOf('ipad') > -1,                                      //iPad
+        webApp: ua.indexOf('safari') == -1,                                 //web应该程序，没有头部与底部
+        wechat: ua.indexOf('micromessenger') > -1,                          //微信
+        qq: ua.match(/\sQQ/i) == " qq",                                     //QQ客户端
+        qqbrowser: ua.indexOf('qq')>-1,                                     //QQ浏览器
+        sinaWeibo: ua.match(/WeiBo/i) == "weibo",                           //新浪微博客户端
+        tencentWeibo: ua.match(/TencentMicroBlog/i) == 'tencentmicroblog',  //腾讯微博客户端
+        qhbrowser: ua.match(/QhBrowser/i) == 'qhbrowser'                    //360浏览器
     }
+    
 })(Zepto);
 
 // fastclick start
@@ -1017,144 +1017,38 @@ $(function() {
     FastClick.attach(document.body);
 });
 ;(function($) {
-  "use strict";
+    "use strict";
+    
+    // duration 动画效果执行所需事件，不传递默认300毫秒
+    $.fn.transitionEnd = function(callback, duration) {
+        var events = ['webkitTransitionEnd', 'transitionend', 'oTransitionEnd', 'MSTransitionEnd', 'msTransitionEnd'];
+        var element = this;
 
-  $.fn.transitionEnd = function(callback) {
-    var events = ['webkitTransitionEnd', 'transitionend', 'oTransitionEnd', 'MSTransitionEnd', 'msTransitionEnd'],
-      i, dom = this;
-
-    function fireCallBack(e) {
-      /*jshint validthis:true */
-      if (e.target !== this) return;
-      callback.call(this, e);
-      for (i = 0; i < events.length; i++) {
-        dom.off(events[i], fireCallBack);
-      }
-    }
-    if (callback) {
-      for (i = 0; i < events.length; i++) {
-        dom.on(events[i], fireCallBack);
-      }
-    }
-    return this;
-  };
-
-  $.support = (function() {
-    var support = {
-      touch: !!(('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch)
+        function closureCallBack(e) {
+            if (e.target !== this) return;
+            callback.call(this, e);
+            for (var i = 0; i < events.length; i++) {
+                element.off(events[i], closureCallBack);
+            }
+        }
+        
+        
+        if (callback) {
+            for (var i = 0; i < events.length; i++) {
+                element.on(events[i], closureCallBack);
+            }
+            
+            // 解决iOS弹簧效果下无法触发事件的bug
+            if($.browser.ios) {
+                setTimeout(function() {
+                    element.remove();
+                }, duration || 300);
+            }
+        }
+        return element;
     };
-    return support;
-  })();
 
-  $.touchEvents = {
-    start: $.support.touch ? 'touchstart' : 'mousedown',
-    move: $.support.touch ? 'touchmove' : 'mousemove',
-    end: $.support.touch ? 'touchend' : 'mouseup'
-  };
-
-  $.getTouchPosition = function(e) {
-    e = e.originalEvent || e; //jquery wrap the originevent
-    if(e.type === 'touchstart' || e.type === 'touchmove' || e.type === 'touchend') {
-      return {
-        x: e.targetTouches[0].pageX,
-        y: e.targetTouches[0].pageY
-      };
-    } else {
-      return {
-        x: e.pageX,
-        y: e.pageY
-      };
-    }
-  };
-
-  $.fn.scrollHeight = function() {
-    return this[0].scrollHeight;
-  };
-
-  $.fn.transform = function(transform) {
-    for (var i = 0; i < this.length; i++) {
-      var elStyle = this[i].style;
-      elStyle.webkitTransform = elStyle.MsTransform = elStyle.msTransform = elStyle.MozTransform = elStyle.OTransform = elStyle.transform = transform;
-    }
-    return this;
-  };
-  $.fn.transition = function(duration) {
-    if (typeof duration !== 'string') {
-      duration = duration + 'ms';
-    }
-    for (var i = 0; i < this.length; i++) {
-      var elStyle = this[i].style;
-      elStyle.webkitTransitionDuration = elStyle.MsTransitionDuration = elStyle.msTransitionDuration = elStyle.MozTransitionDuration = elStyle.OTransitionDuration = elStyle.transitionDuration = duration;
-    }
-    return this;
-  };
-
-  $.getTranslate = function (el, axis) {
-    var matrix, curTransform, curStyle, transformMatrix;
-
-    // automatic axis detection
-    if (typeof axis === 'undefined') {
-      axis = 'x';
-    }
-
-    curStyle = window.getComputedStyle(el, null);
-    if (window.WebKitCSSMatrix) {
-      // Some old versions of Webkit choke when 'none' is passed; pass
-      // empty string instead in this case
-      transformMatrix = new WebKitCSSMatrix(curStyle.webkitTransform === 'none' ? '' : curStyle.webkitTransform);
-    }
-    else {
-      transformMatrix = curStyle.MozTransform || curStyle.OTransform || curStyle.MsTransform || curStyle.msTransform  || curStyle.transform || curStyle.getPropertyValue('transform').replace('translate(', 'matrix(1, 0, 0, 1,');
-      matrix = transformMatrix.toString().split(',');
-    }
-
-    if (axis === 'x') {
-      //Latest Chrome and webkits Fix
-      if (window.WebKitCSSMatrix)
-        curTransform = transformMatrix.m41;
-      //Crazy IE10 Matrix
-      else if (matrix.length === 16)
-        curTransform = parseFloat(matrix[12]);
-      //Normal Browsers
-      else
-        curTransform = parseFloat(matrix[4]);
-    }
-    if (axis === 'y') {
-      //Latest Chrome and webkits Fix
-      if (window.WebKitCSSMatrix)
-        curTransform = transformMatrix.m42;
-      //Crazy IE10 Matrix
-      else if (matrix.length === 16)
-        curTransform = parseFloat(matrix[13]);
-      //Normal Browsers
-      else
-        curTransform = parseFloat(matrix[5]);
-    }
-
-    return curTransform || 0;
-  };
-  $.requestAnimationFrame = function (callback) {
-    if (window.requestAnimationFrame) return window.requestAnimationFrame(callback);
-    else if (window.webkitRequestAnimationFrame) return window.webkitRequestAnimationFrame(callback);
-    else if (window.mozRequestAnimationFrame) return window.mozRequestAnimationFrame(callback);
-    else {
-      return window.setTimeout(callback, 1000 / 60);
-    }
-  };
-
-  $.cancelAnimationFrame = function (id) {
-    if (window.cancelAnimationFrame) return window.cancelAnimationFrame(id);
-    else if (window.webkitCancelAnimationFrame) return window.webkitCancelAnimationFrame(id);
-    else if (window.mozCancelAnimationFrame) return window.mozCancelAnimationFrame(id);
-    else {
-      return window.clearTimeout(id);
-    }  
-  };
-
-  $.fn.join = function(arg) {
-    return this.toArray().join(arg);
-  }
-})($);
+})(Zepto);
 
 
 // dialog.js
@@ -1164,7 +1058,7 @@ $(function() {
 ;(function($) {
     "use strict";
     
-    var _defaults;
+    var _defaults, _timer;
     $.dialog = function(params) {
         params = (typeof params == 'object') ? params : {};
 
@@ -1220,12 +1114,17 @@ $(function() {
     }
     
     $.closeDialog = function() {
-        $('.sui-mask').removeClass('sui-mask-visible').transitionEnd(function() {
+        if($('body').hasClass('forbid-scroll')) {
+            $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
+        }
+        
+        $('.sui-mask').transitionEnd(function() {
             $(this).remove();
-        });
-        $('.sui-dialog').removeClass('sui-dialog-visible').transitionEnd(function() {
+        }).removeClass('sui-mask-visible');
+        $('.sui-dialog').transitionEnd(function() {
             $(this).remove();
-        });
+        }).removeClass('sui-dialog-visible');
+        
     }
     
     $.alert = function(text, title, onOk) {
@@ -1251,6 +1150,9 @@ $(function() {
                 text: _defaults.okVal,
                 onClick: config.onOk
             }]
+        });
+        $('body').addClass('forbid-scroll').on('touchmove', function(event){
+            event.preventDefault();
         });
     }
     
@@ -1283,6 +1185,9 @@ $(function() {
                 text: _defaults.okVal,
                 onClick: config.onOk
             }]
+        });
+        $('body').addClass('forbid-scroll').on('touchmove', function(event){
+            event.preventDefault();
         });
     }
     
@@ -1383,6 +1288,11 @@ $(function() {
             actionSheet.addClass('sui-actionsheet-visible');
         }, 0);
         
+        // 禁用滚动条
+        $('body').addClass('forbid-scroll').on('touchmove', function(event){
+            event.preventDefault();
+        });
+        
         // 事件
         $('.sui-actionsheet-button-group li').on('click', function() {
             var button = params.buttons[$(this).index()];
@@ -1403,15 +1313,16 @@ $(function() {
     }
     
     var hide = function(isCancel) {
+        $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
         if($.isFunction(_onClose) && isCancel) {
             _onClose();
         }
-        $('.sui-mask').removeClass('sui-mask-visible').transitionEnd(function() {
+        $('.sui-mask').transitionEnd(function() {
            $(this).remove(); 
-        });
-        $('.sui-actionsheet').removeClass('sui-actionsheet-visible').transitionEnd(function() {
+        }).removeClass('sui-mask-visible');
+        $('.sui-actionsheet').transitionEnd(function() {
             $(this).remove();
-        });
+        }).removeClass('sui-actionsheet-visible');
         _onClose = undefined;
     }
     
@@ -1482,6 +1393,9 @@ $(function() {
         
         if(params.style != 'text') {
             mask.css('display', 'block');
+            $('body').addClass('forbid-scroll').on('touchmove', function(event){
+                event.preventDefault();
+            });
         }
         
         // 动画
@@ -1506,21 +1420,22 @@ $(function() {
         var mask = $('.sui-mask-transparent');
         
         if(mask.hasClass('sui-mask-visible')) {
-            mask.removeClass('sui-mask-visible').transitionEnd(function() {
+            mask.transitionEnd(function() {
                 $(this).remove();
-            });
+            }).removeClass('sui-mask-visible');
         } else {
             mask.remove();
         }
         
         if(toast.hasClass('sui-toast-visible')) {
-            toast.removeClass('sui-toast-visible').transitionEnd(function(){
+            $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
+            toast.transitionEnd(function(){
                 $(this).remove();
-            });
+            }).removeClass('sui-toast-visible');
         } else {
-            toast.removeClass('sui-toast-content-visible').transitionEnd(function(){
+            toast.transitionEnd(function(){
                 $(this).remove();
-            });
+            }).removeClass('sui-toast-content-visible');
         }
         if($.isFunction(_destroy)) _destroy();
         _destroy = undefined;
@@ -1562,8 +1477,14 @@ $(function() {
             }
         }
         
-        _destroy = config.destroy;
-        show(config, true);
+        var autoClose = true;
+        if(config.style == 'loading') {
+            autoClose = false;
+        } else {
+            _destroy = config.destroy;
+        }
+        
+        show(config, autoClose);
     }
     
     $.toastSuccess = function(text, destroy) {

@@ -6,7 +6,7 @@
 ;(function($) {
     "use strict";
     
-    var _defaults;
+    var _defaults, _timer;
     $.dialog = function(params) {
         params = (typeof params == 'object') ? params : {};
 
@@ -62,12 +62,17 @@
     }
     
     $.closeDialog = function() {
-        $('.sui-mask').removeClass('sui-mask-visible').transitionEnd(function() {
+        if($('body').hasClass('forbid-scroll')) {
+            $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
+        }
+        
+        $('.sui-mask').transitionEnd(function() {
             $(this).remove();
-        });
-        $('.sui-dialog').removeClass('sui-dialog-visible').transitionEnd(function() {
+        }).removeClass('sui-mask-visible');
+        $('.sui-dialog').transitionEnd(function() {
             $(this).remove();
-        });
+        }).removeClass('sui-dialog-visible');
+        
     }
     
     $.alert = function(text, title, onOk) {
@@ -93,6 +98,9 @@
                 text: _defaults.okVal,
                 onClick: config.onOk
             }]
+        });
+        $('body').addClass('forbid-scroll').on('touchmove', function(event){
+            event.preventDefault();
         });
     }
     
@@ -125,6 +133,9 @@
                 text: _defaults.okVal,
                 onClick: config.onOk
             }]
+        });
+        $('body').addClass('forbid-scroll').on('touchmove', function(event){
+            event.preventDefault();
         });
     }
     

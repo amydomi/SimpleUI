@@ -101,6 +101,9 @@ a {
   outline: 0;
   -webkit-tap-highlight-color: transparent;
 }
+.forbid-scroll {
+  overflow: hidden !important;
+}
 em,
 i {
   font-style: normal;
