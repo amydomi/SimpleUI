@@ -16,6 +16,8 @@
     }
 
 ##### Alert
+功能描述：模拟原生window.alert，有一个确定按钮。
+
 ```javascript
    $.alert(text, title, onOk);
    $.alert(text, onOk);
@@ -29,6 +31,8 @@
 	config(上述配置综合): object
 
 ##### Confirm
+功能描述：模拟原生window.confirm，有取消和确定按钮。
+
 ```javascript
    $.confirm(text, title, onOk, onCancel);
    $.confirm(text, onOk, onCancel);
@@ -43,6 +47,8 @@
 	config(上述配置综合): object
 
 ##### Prompt
+功能描述：模拟原生window.prompt，有取消和确定和一个输入框。
+
 ```javascript
    $.prompt(title, text, onOk, onCancel, placeholder, input);
    $.prompt(title, onOk, onCancel, placeholder, input);
@@ -59,6 +65,8 @@
 	config(上述配置综合): object
 
 ##### Dialog
+功能描述：自定义Dialog，具体项目运用中可使用此接口扩展更多弹出框功能，可传递html进行自由定制。
+
 ```javascript
 	$.dialog(config);
 ```
@@ -95,6 +103,7 @@ $.closeDialog();
 	}
 
 ##### ActionSheet
+功能描述：模拟IOS原生UIActionSheet控件，展示效果参考了微信。
 
 ```javascript
 	$.actionSheet(buttons, title, onClose, autoClose);
