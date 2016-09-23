@@ -94,4 +94,4 @@ $.hideLoading();
 
 
 
-[查看DEMO示例](https://dusksoft.github.io/SimpleUI/demo/dialog.html) | [返回文档首页](index.md)
+[查看DEMO示例](https://dusksoft.github.io/SimpleUI/demo/toast.html) | [返回文档首页](index.md)
