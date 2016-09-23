@@ -6,9 +6,15 @@
 ;(function($) {
     "use strict";
     
-    var _defaults, _destroy;
+    var _defaults, _destroy, _timer;
     var show = function(params, autoClose) {
         params = $.extend({}, _defaults, params);
+        
+        // 单列
+        if($('.sui-toast').length > 0) {
+            $('.sui-toast').remove();
+            $('.sui-mask-transparent').remove();
+        }
         
         var strHtml = '<div class="sui-toast{{?it.style=="text"}} sui-toast-content{{?}}">' +
                     '{{?it.style=="success"||it.style=="error"}}' +
@@ -25,12 +31,16 @@
                 '</div>';
         
         var template = $(doT.template(strHtml)(params));
-        var mask = $('<div class="sui-mask-transparent"></div>').appendTo(document.body).css('display', 'block');
+        var mask = $('<div class="sui-mask-transparent"></div>').appendTo(document.body);
         var toast = template.appendTo(document.body).css('display', 'block');
+        
+        if(params.style != 'text') {
+            mask.css('display', 'block');
+        }
         
         // 动画
         setTimeout(function() {
-            mask.addClass('sui-mask-visible');
+            if(params.style != 'text') mask.addClass('sui-mask-visible');
             if(params.style == 'text') {
                 toast.addClass('sui-toast-content-visible');
             } else {
@@ -39,16 +49,23 @@
         }, 0);
         
         if(autoClose && params.duration) {
-            setTimeout(hide, params.duration);
+            clearTimeout(_timer);
+            _timer = setTimeout(hide, params.duration);
         }
     }
     
     var hide = function() {
+        clearTimeout(_timer);
         var toast = $('.sui-toast');
+        var mask = $('.sui-mask-transparent');
         
-        $('.sui-mask-transparent').removeClass('sui-mask-visible').transitionEnd(function() {
-            $(this).remove();
-        });
+        if(mask.hasClass('sui-mask-visible')) {
+            mask.removeClass('sui-mask-visible').transitionEnd(function() {
+                $(this).remove();
+            });
+        } else {
+            mask.remove();
+        }
         
         if(toast.hasClass('sui-toast-visible')) {
             toast.removeClass('sui-toast-visible').transitionEnd(function(){
@@ -68,14 +85,25 @@
         if(typeof text == 'object') {
             config = text;
         } else {
-            if(typeof style == 'undefined') {
-                style = 'text';
-                duration = _defaults.duration;
-            } else if(typeof style == 'number') {
-                duration = arguments[1];
-                destroy = arguments[2];
-                style = 'text';
-            } else if(typeof duration == 'function') {
+            
+            switch(typeof(style)) {
+                case 'undefined':
+                    duration = _defaults.duration;
+                    style = 'text';
+                    break;
+                case 'number':
+                    duration = arguments[1];
+                    destroy = arguments[2];
+                    style = 'text';
+                    break;
+                case 'function':
+                    duration = _defaults.duration;
+                    destroy = arguments[1];
+                    style = 'text';
+                    break;
+            }
+            
+            if(typeof duration == 'function') {
                 destroy = arguments[2];
                 duration = _defaults.duration;
             }
@@ -88,15 +116,29 @@
             }
         }
         
-        _destroy = config.destroy;
-        show(config, true);
+        var autoClose = true;
+        if(config.style == 'loading') {
+            autoClose = false;
+        } else {
+            _destroy = config.destroy;
+        }
+        
+        show(config, autoClose);
     }
     
     $.toastSuccess = function(text, destroy) {
+        if(typeof text == 'function') {
+            destroy = arguments[0];
+            text = undefined;
+        }
         $.toast(text || '操作成功', 'success', undefined, destroy);
     }
     
     $.toastError = function(text, destroy) {
+        if(typeof text == 'function') {
+            destroy = arguments[0];
+            text = undefined;
+        }
         $.toast(text || '操作失败', 'error', undefined, destroy);
     }
     

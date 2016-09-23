@@ -17,41 +17,6 @@
         <li id="loadingTester">Loading</li>
         <li id="textTester">Text</li>
    </ul>
-       
-    <!--<div class="sui-toast">
-        <i class="sui-toast-icon sui-toast-success"></i>
-        <div class="sui-toast-text">操作成功</div>
-    </div>
-    
-    <div class="sui-toast">
-        <i class="sui-toast-icon sui-toast-error"></i>
-        <div class="sui-toast-text">请求失败</div>
-    </div>
-    
-    
-    <div class="sui-toast">
-        <div class="sui-toast-loading">
-            <i class="sui-loading-l sui-loading-l-0"></i>
-            <i class="sui-loading-l sui-loading-l-1"></i>
-            <i class="sui-loading-l sui-loading-l-2"></i>
-            <i class="sui-loading-l sui-loading-l-3"></i>
-            <i class="sui-loading-l sui-loading-l-4"></i>
-            <i class="sui-loading-l sui-loading-l-5"></i>
-            <i class="sui-loading-l sui-loading-l-6"></i>
-            <i class="sui-loading-l sui-loading-l-7"></i>
-            <i class="sui-loading-l sui-loading-l-8"></i>
-            <i class="sui-loading-l sui-loading-l-9"></i>
-            <i class="sui-loading-l sui-loading-l-10"></i>
-            <i class="sui-loading-l sui-loading-l-11"></i>
-        </div>
-        <div class="sui-toast-text sui-toast-loading-text">数据加载中</div>
-    </div>
-    
-    
-    <div class="sui-toast sui-toast-content sui-toast-content-visible">
-        <div class="sui-toast-text">这是一个非常好用的前端框架</div>
-    </div>
-    -->
     
     <script src="../dist/js/zepto.min.js"></script>
     <script src="../dist/js/simpleui.min.js"></script>
@@ -79,7 +44,9 @@
         
         // 纯文本
         $('#textTester').on('click', function() {
-            $.toast('好用的框架不需要封装太多功能。');
+            $.toast('好用的框架不需要封装太多功能', function() {
+                console.log('aaaa');
+            });
         });
     });
     </script>
