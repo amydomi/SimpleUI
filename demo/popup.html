@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SimpleUI</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../dist/style/simpleui.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    
+    <ul class="sui-list sui-list-link sui-mtb20 sui-border-tb">
+        <li id="btn1">Push</li>
+        <li id="btn2">Modal</li>
+        <li id="btn3">Menu</li>
+        <li id="btn4">Plate</li>
+   </ul>
+    
+    <div id="popup1" class="sui-popup-container">
+        <div class="sui-mask"></div>
+        <div class="sui-popup-modal">
+            <!--内容开始-->
+            <ul class="sui-list sui-list-link">
+                <li class="open-popup" data-target="popup2">继续打开新窗口</li>
+                <li id="closeButton">关闭Popup-1</li>
+            </ul>
+            <!--内容结束-->
+        </div>
+    </div>
+    
+    <div id="popup2" class="sui-popup-container">
+        <div class="sui-mask"></div>
+        <div class="sui-popup-modal">
+            <!--内容开始-->
+            <ul class="sui-list sui-list-link">
+                <li class="close-popup" data-target="popup2">关闭Popup-2</li>
+            </ul>
+            <!--内容结束-->
+        </div>
+    </div>
+    
+    <script src="../dist/js/zepto.min.js"></script>
+    <script src="../dist/js/simpleui.min.js"></script>
+    <script>
+    $(function() {
+        
+        // 使用push方式打开
+        $('#btn1').click(function() {
+            $('#popup1').popup('push');
+        });
+        
+        // 使用modal方式打开
+        $('#btn2').click(function() {
+            $('#popup1').popup('modal');
+        });
+        
+        // 使用侧边看菜单方式打开
+        $('#btn3').click(function() {
+            $('#popup1').popup('menu');
+        });
+        
+        // 使用托盘方式打开
+        $('#btn4').click(function() {
+            $('#popup1').popup('plate');
+        });
+        
+        // 关闭
+        $('#closeButton').click(function() {
+            $('#popup1').closePopup();
+        });
+    });
+    </script>
+</body>
+</html>

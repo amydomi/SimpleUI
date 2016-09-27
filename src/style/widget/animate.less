@@ -58,3 +58,34 @@
     display: block;
     transform: translate(-50%, 0px);
 }
+
+// popup
+.sui-popup-container,
+.sui-popup-modal {
+    display: none;
+    transition-property: all;
+    transition-duration: .2s;
+    backface-visibility:hidden;
+}
+.sui-popup-effect-plate {
+    height: auto !important;
+}
+.sui-popup-effect-menu {
+    width: 60% !important;
+    transform: translateX(-100%);
+}
+.sui-popup-effect-plate,
+.sui-popup-effect-modal {
+    transform: translateY(100%);
+}
+.sui-popup-effect-push {
+    transform: translateX(100%);
+}
+.sui-popup-effect-plate-visible,
+.sui-popup-effect-modal-visible {
+    transform: translateY(0px);
+}
+.sui-popup-effect-push-visible,
+.sui-popup-effect-menu-visible {
+    transform: translateX(0px);
+}

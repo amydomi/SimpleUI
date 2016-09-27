@@ -11,11 +11,15 @@
         var events = ['webkitTransitionEnd', 'transitionend', 'oTransitionEnd', 'MSTransitionEnd', 'msTransitionEnd'];
         var element = this;
         
-        if(typeof isClear == 'number') {
-            duration = arguments[1];
-            isClear = undefined;
+        switch(typeof isClear) {
+            case 'number':
+                duration = arguments[1];
+                isClear = undefined;
+                break;
+            case 'undefined':
+                isClear = true;
+                break;
         }
-        isClear = isClear || true;
         
         function closureCallBack(e) {
             if (e.target !== this) return;
@@ -30,7 +34,7 @@
                 element.on(events[i], closureCallBack);
             }
             // 解决iOS弹簧效果下无法触发事件的bug
-            if($.browser.ios) {
+            if($.browser.ios && isClear) {
                 setTimeout(function() {
                     element.remove();
                 }, duration || 300);
