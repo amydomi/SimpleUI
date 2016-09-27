@@ -27,9 +27,8 @@
         popup = $(popup);
         var mask = popup.children('.sui-mask');
         var modal = popup.children('.sui-popup-modal');
-        //z-index  mask的z-index是1000， modeal默认从1001开始
         var zIndex = $('.sui-popup-on');
-        zIndex = zIndex ? zIndex.length + 1001 : 1001;
+        zIndex = zIndex ? zIndex.length + 8000 : 8000;
         
         // 如果是已经展开了，只要改变z-index让其显示即可。
         if(popup.hasClass('sui-popup-on')) {
