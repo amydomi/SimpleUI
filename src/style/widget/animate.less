@@ -3,12 +3,14 @@
     transition-property: all;
     transition-duration: .3s;
     opacity: 0;
+    transform: translateZ(0);
     display: none;
 }
 
 .sui-mask-visible {
     opacity: 1;
     display: block;
+    transform: translateZ(0);
 }
 
 // dialog
@@ -16,24 +18,24 @@
     transition-property: all;
     transition-duration: .2s;
     opacity: 0;
-    transform: translate(-50%, -50%) scale(.9);
+    transform: translateZ(0) translate(-50%, -50%) scale(.9);
     display: none;
 }
 .sui-dialog-visible {
     opacity: 1;
     display: block;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translateZ(0) translate(-50%, -50%) scale(1);
 }
 
 // actionSheet
 .sui-actionsheet {
     transition-property: all;
     transition-duration: .3s;
-    transform: translateY(100%);
+    transform: translateZ(0) translateY(100%);
     backface-visibility:hidden;
 }
 .sui-actionsheet-visible {
-    transform: translateY(0px);
+    transform: translateZ(0) translateY(0px);
 }
 
 // toast
@@ -41,22 +43,22 @@
     transition-property: all;
     transition-duration: .2s;
     opacity: 0;
-    transform: scale(.9);
+    transform: translateZ(0) scale(.9);
     display: none;
 }
 .sui-toast-visible {
     opacity: 1;
     display: block;
-    transform: scale(1);   
+    transform: translateZ(0) scale(1);   
 }
 .sui-toast-content {
     transition-duration: .3s;
-    transform: translate(-50%, 20px);
+    transform: translateZ(0) translate(-50%, 20px);
 }
 .sui-toast-content-visible {
     opacity: 1;
     display: block;
-    transform: translate(-50%, 0px);
+    transform: translateZ(0) translate(-50%, 0px);
 }
 
 // popup
@@ -72,20 +74,20 @@
 }
 .sui-popup-effect-menu {
     width: 60% !important;
-    transform: translateX(-100%);
+    transform: translateZ(0) translateX(-100%);
 }
 .sui-popup-effect-plate,
 .sui-popup-effect-modal {
-    transform: translateY(100%);
+    transform: translateZ(0) translateY(100%);
 }
 .sui-popup-effect-push {
-    transform: translateX(100%);
+    transform: translateZ(0) translateX(100%);
 }
 .sui-popup-effect-plate-visible,
 .sui-popup-effect-modal-visible {
-    transform: translateY(0px);
+    transform: translateZ(0) translateY(0px);
 }
 .sui-popup-effect-push-visible,
 .sui-popup-effect-menu-visible {
-    transform: translateX(0px);
+    transform: translateZ(0) translateX(0px);
 }

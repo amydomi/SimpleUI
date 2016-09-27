@@ -1561,13 +1561,20 @@ $(function() {
         popup = $(popup);
         var mask = popup.children('.sui-mask');
         var modal = popup.children('.sui-popup-modal');
+        //z-index  mask的z-index是1000， modeal默认从1001开始
+        var zIndex = $('.sui-popup-on');
+        zIndex = zIndex ? zIndex.length + 1001 : 1001;
+        
+        // 如果是已经展开了，只要改变z-index让其显示即可。
+        if(popup.hasClass('sui-popup-on')) {
+            modal.css('z-index', zIndex);
+            return;
+        }
         
         popup.onHide = onHide;
         modal.addClass(_effectList[effect][0]);
         
-        //z-index  mask的z-index是1000， modeal默认从1001开始
-        var zIndex = $('.sui-popup-on');
-        zIndex = zIndex ? zIndex.length + 1001 : 1001;
+        
         popup.css('display', 'block').addClass('sui-popup-on');
         mask.css('display', 'block');
         modal.css('display', 'block').css('z-index', zIndex);

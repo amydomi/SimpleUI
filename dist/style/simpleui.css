@@ -1111,11 +1111,15 @@ i {
   -webkit-transition-duration: .3s;
           transition-duration: .3s;
   opacity: 0;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
   display: none;
 }
 .sui-mask-visible {
   opacity: 1;
   display: block;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
 }
 .sui-dialog {
   -webkit-transition-property: all;
@@ -1123,29 +1127,29 @@ i {
   -webkit-transition-duration: .2s;
           transition-duration: .2s;
   opacity: 0;
-  -webkit-transform: translate(-50%, -50%) scale(0.9);
-          transform: translate(-50%, -50%) scale(0.9);
+  -webkit-transform: translateZ(0) translate(-50%, -50%) scale(0.9);
+          transform: translateZ(0) translate(-50%, -50%) scale(0.9);
   display: none;
 }
 .sui-dialog-visible {
   opacity: 1;
   display: block;
-  -webkit-transform: translate(-50%, -50%) scale(1);
-          transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translateZ(0) translate(-50%, -50%) scale(1);
+          transform: translateZ(0) translate(-50%, -50%) scale(1);
 }
 .sui-actionsheet {
   -webkit-transition-property: all;
   transition-property: all;
   -webkit-transition-duration: .3s;
           transition-duration: .3s;
-  -webkit-transform: translateY(100%);
-          transform: translateY(100%);
+  -webkit-transform: translateZ(0) translateY(100%);
+          transform: translateZ(0) translateY(100%);
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
 }
 .sui-actionsheet-visible {
-  -webkit-transform: translateY(0px);
-          transform: translateY(0px);
+  -webkit-transform: translateZ(0) translateY(0px);
+          transform: translateZ(0) translateY(0px);
 }
 .sui-toast {
   -webkit-transition-property: all;
@@ -1153,27 +1157,27 @@ i {
   -webkit-transition-duration: .2s;
           transition-duration: .2s;
   opacity: 0;
-  -webkit-transform: scale(0.9);
-          transform: scale(0.9);
+  -webkit-transform: translateZ(0) scale(0.9);
+          transform: translateZ(0) scale(0.9);
   display: none;
 }
 .sui-toast-visible {
   opacity: 1;
   display: block;
-  -webkit-transform: scale(1);
-          transform: scale(1);
+  -webkit-transform: translateZ(0) scale(1);
+          transform: translateZ(0) scale(1);
 }
 .sui-toast-content {
   -webkit-transition-duration: .3s;
           transition-duration: .3s;
-  -webkit-transform: translate(-50%, 20px);
-          transform: translate(-50%, 20px);
+  -webkit-transform: translateZ(0) translate(-50%, 20px);
+          transform: translateZ(0) translate(-50%, 20px);
 }
 .sui-toast-content-visible {
   opacity: 1;
   display: block;
-  -webkit-transform: translate(-50%, 0px);
-          transform: translate(-50%, 0px);
+  -webkit-transform: translateZ(0) translate(-50%, 0px);
+          transform: translateZ(0) translate(-50%, 0px);
 }
 .sui-popup-container,
 .sui-popup-modal {
@@ -1190,25 +1194,25 @@ i {
 }
 .sui-popup-effect-menu {
   width: 60% !important;
-  -webkit-transform: translateX(-100%);
-          transform: translateX(-100%);
+  -webkit-transform: translateZ(0) translateX(-100%);
+          transform: translateZ(0) translateX(-100%);
 }
 .sui-popup-effect-plate,
 .sui-popup-effect-modal {
-  -webkit-transform: translateY(100%);
-          transform: translateY(100%);
+  -webkit-transform: translateZ(0) translateY(100%);
+          transform: translateZ(0) translateY(100%);
 }
 .sui-popup-effect-push {
-  -webkit-transform: translateX(100%);
-          transform: translateX(100%);
+  -webkit-transform: translateZ(0) translateX(100%);
+          transform: translateZ(0) translateX(100%);
 }
 .sui-popup-effect-plate-visible,
 .sui-popup-effect-modal-visible {
-  -webkit-transform: translateY(0px);
-          transform: translateY(0px);
+  -webkit-transform: translateZ(0) translateY(0px);
+          transform: translateZ(0) translateY(0px);
 }
 .sui-popup-effect-push-visible,
 .sui-popup-effect-menu-visible {
-  -webkit-transform: translateX(0px);
-          transform: translateX(0px);
+  -webkit-transform: translateZ(0) translateX(0px);
+          transform: translateZ(0) translateX(0px);
 }
