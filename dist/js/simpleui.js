@@ -1,5 +1,5 @@
 /*!
- * SimpleUI v0.0.9
+ * SimpleUI v0.0.10
  * URL: https://github.com/dusksoft/SimpleUI#readme
  * (c) 2016 by huanghai. All rights reserved.
  * Licensed under the MIT license
@@ -1703,12 +1703,8 @@ $(function() {
         }
         text = text || '正在加载中...';
         
-        var strHtml = '<div class="sui-loading-wrap">' +
-                '<i class="sui-loading"></i>' +
-                '<span>{{=it}}</span>' +
-            '</div>';
-        var template = doT.template(strHtml)(text);
-        element.after(template);
+        var strHtml = '<div class="sui-loading-wrap"><i class="sui-loading"></i><span>' + text + '</span></div>';
+        element.after(strHtml);
     }
     
     $.fn.hideLoading = function() {
