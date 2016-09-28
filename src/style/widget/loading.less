@@ -1,0 +1,28 @@
+.sui-loading-wrap {
+    padding: 10px 0;
+    height: 20px;
+    text-align: center;
+    span {
+        position: relative;
+        top: -5px;
+        padding-left: 5px;
+    }
+}
+.sui-loading {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    background: @loading-icon;
+    background-size: auto 20px;
+    animation: load-rotate 1s steps(12) infinite;
+}
+@keyframes load-rotate {
+    from {
+    	background-position: 0 0;
+    }
+    to {
+        background-position: -240px 0;
+    }
+}
