@@ -73,10 +73,10 @@ html方式显示
 使用js方式显示显示。
 ```javascript
 	// 元素插件调用方式
-	$('#popup1').closePopup();
+	$('#popup1').closePopup(callback);
 	
 	// 全局对象方式调用
-	$.closePopup(popup);
+	$.closePopup(popup, callback);
 ```
 
 使用全局方式关闭，需要传递一个元素节点参数来保证正确的关闭面板。

@@ -1592,7 +1592,7 @@ $(function() {
         }
     }
     
-    $.closePopup = function(popup) {
+    $.closePopup = function(popup, callback) {
         popup = $(popup);
         var mask = popup.children('.sui-mask');
         var modal = popup.children('.sui-popup-modal');
@@ -1606,6 +1606,7 @@ $(function() {
                 modal.removeClass(value[1]).transitionEnd(function(){
                     $(this).css('display', 'none').removeClass(value[0]);
                     popup.css('display', 'none');
+					if($.isFunction(callback)) callback();
                 }, false);
                 return;
             }
@@ -1639,8 +1640,11 @@ $(function() {
 		stY = event.touches[0].pageY;
 	});
 	$('.sui-popup-modal').on('touchmove', function(event) {
-		var scrollY = stY - event.touches[0].pageY;
-		$(this).scrollTop(scrollY + etY);
+        if (event.targetTouches.length == 1) {
+            event.preventDefault();
+		    var scrollY = stY - event.touches[0].pageY;
+		    $(this).scrollTop(scrollY + etY);
+        }
 	});
     
     // 打开和关闭必须是单列的
@@ -1654,9 +1658,9 @@ $(function() {
         return $.openPopup(this, effect, onHide);
     }
     
-    $.fn.closePopup = function() {
+    $.fn.closePopup = function(callback) {
         if($(this).length > 1) return;
-        return $.closePopup(this);
+        return $.closePopup(this, callback);
     }
 })(Zepto);
 
