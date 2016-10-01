@@ -14,7 +14,8 @@
         plate: ['sui-popup-effect-plate', 'sui-popup-effect-plate-visible'],
     }
     
-    $.openPopup = function(popup, effect, onHide) {
+    var _onCallback, _data;
+    $.openPopup = function(popup, effect, onOpen, onCallback) {
         var flag = false;
         $.each(_effectList, function(name, value) {
            if(effect == name) {
@@ -36,7 +37,11 @@
             return;
         }
         
-        popup.onHide = onHide;
+        // 展开前执行onPen事件
+        if($.isFunction(onOpen)) {
+            onOpen();
+        }
+        _onCallback = onCallback;
         modal.addClass(_effectList[effect][0]);
         
         
@@ -72,20 +77,27 @@
                 modal.removeClass(value[1]).transitionEnd(function(){
                     $(this).css('display', 'none').removeClass(value[0]);
                     popup.css('display', 'none');
-					if($.isFunction(callback)) callback();
+					// 关闭时候执行的回调
+                    if($.isFunction(callback)) callback();
+                    // 打开时的回调事件，必须保证传递的数据不为空才会触发
+                    if($.isFunction(_onCallback) && _data) {
+                        _onCallback(_data);
+                        _data = undefined;
+                        _onCallback = undefined;
+                    }
                 }, false);
                 return;
             }
         })
-        
-        if(popup.onHide && typeof popup.onHide == 'function') {
-            popup.onHide();
-            popup.onHide = undefined;
-        }
+
         popup.removeClass('sui-popup-on');
         if($('.sui-popup-on').length <= 0) {
             $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
         }
+    }
+    
+    $.setPopupData = function(data) {
+        _data = data;
     }
     
     // 自动初始化
@@ -114,14 +126,15 @@
 	});
     
     // 打开和关闭必须是单列的
-    $.fn.popup = function(effect, onHide) {
+    $.fn.popup = function(effect, onOpen, onCallback) {
         if(typeof effect == 'function') {
-            onHide = arguments[1];
+            onOpen = arguments[0];
+            onCallback = arguments[1];
             effect = 'modal';
         }
         
         if($(this).length > 1) return;
-        return $.openPopup(this, effect, onHide);
+        return $.openPopup(this, effect, onOpen, onCallback);
     }
     
     $.fn.closePopup = function(callback) {

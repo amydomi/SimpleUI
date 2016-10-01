@@ -50,11 +50,17 @@
         // 使用push方式打开
         $('#btn1').click(function() {
             $('#popup1').popup('push');
+            
+            $.setPopupData('传递参数收到了吗？');
         });
         
         // 使用modal方式打开
         $('#btn2').click(function() {
-            $('#popup1').popup('modal');
+            $('#popup1').popup(function() {
+                console.log('open');
+            }, function(data) {
+                console.log('参数收到了，值是：' + data);
+            });
         });
         
         // 使用侧边看菜单方式打开
