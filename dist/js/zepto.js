@@ -1995,7 +1995,18 @@ window.$ === undefined && (window.$ = Zepto)
 
 
     });
-})($);
+})(Zepto);
+
+
+;(function($) {
+    
+    // create data key
+    $.createDatakey = function(name) {
+		var d = new Date();
+		return name + '_' + (Math.floor(Math.random() * 100) + 999) + d.getDate() + d.getHours() + d.getMinutes() + d.getSeconds() + (Math.floor(Math.random() * 100) + 999);
+	}
+    
+})(Zepto);
 //     Zepto.js
 //     (c) 2010-2016 Thomas Fuchs
 //     Zepto.js may be freely distributed under the MIT license.

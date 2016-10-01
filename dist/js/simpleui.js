@@ -1548,7 +1548,7 @@ $(function() {
         plate: ['sui-popup-effect-plate', 'sui-popup-effect-plate-visible'],
     }
     
-    var _onCallback, _data;
+    var _onCallback = {}, _data = {};
     $.openPopup = function(popup, effect, onOpen, onCallback) {
         var flag = false;
         $.each(_effectList, function(name, value) {
@@ -1568,14 +1568,21 @@ $(function() {
         // 如果是已经展开了，只要改变z-index让其显示即可。
         if(popup.hasClass('sui-popup-on')) {
             modal.css('z-index', zIndex);
-            return;
+            return popup;
         }
         
         // 展开前执行onPen事件
         if($.isFunction(onOpen)) {
             onOpen();
         }
-        _onCallback = onCallback;
+        
+        // 记录回调事件
+        if(onCallback) {
+            var id = $.createDatakey('popup');
+            popup.data('key', id);
+            _onCallback[id] = onCallback;
+        }
+        
         modal.addClass(_effectList[effect][0]);
         
         
@@ -1595,12 +1602,15 @@ $(function() {
                 event.preventDefault();
             });
         }
+        
+        return popup;
     }
     
     $.closePopup = function(popup, callback) {
         popup = $(popup);
         var mask = popup.children('.sui-mask');
         var modal = popup.children('.sui-popup-modal');
+        var key = popup.data('key');
         
         mask.removeClass('sui-mask-visible').transitionEnd(function(){
             $(this).css('display', 'none');
@@ -1614,10 +1624,10 @@ $(function() {
 					// 关闭时候执行的回调
                     if($.isFunction(callback)) callback();
                     // 打开时的回调事件，必须保证传递的数据不为空才会触发
-                    if($.isFunction(_onCallback) && _data) {
-                        _onCallback(_data);
-                        _data = undefined;
-                        _onCallback = undefined;
+                    if($.isFunction(_onCallback[key]) && _data[key]) {
+                        _onCallback[key](_data[key]);
+                        delete _data[key];
+                        delete _onCallback[key];
                     }
                 }, false);
                 return;
@@ -1628,10 +1638,17 @@ $(function() {
         if($('.sui-popup-on').length <= 0) {
             $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
         }
+        
+        return popup;
     }
     
-    $.setPopupData = function(data) {
-        _data = data;
+    $.setPopupData = function(popup, data) {
+        popup = $(popup);
+        var key = popup.data('key');
+        if(key) {
+            _data[key] = data;
+        }
+        return popup;
     }
     
     // 自动初始化
@@ -1668,12 +1685,19 @@ $(function() {
         }
         
         if($(this).length > 1) return;
-        return $.openPopup(this, effect, onOpen, onCallback);
+        $.openPopup(this, effect, onOpen, onCallback);
+        return $(this);
     }
     
     $.fn.closePopup = function(callback) {
         if($(this).length > 1) return;
         return $.closePopup(this, callback);
+        return $(this);
+    }
+    
+    $.fn.setPopupData = function(data) {
+        $.setPopupData(this, data);
+        return $(this);
     }
 })(Zepto);
 

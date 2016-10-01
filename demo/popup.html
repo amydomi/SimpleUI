@@ -49,16 +49,19 @@
         
         // 使用push方式打开
         $('#btn1').click(function() {
-            $('#popup1').popup('push');
-            
-            $.setPopupData('传递参数收到了吗？');
+            $('#popup1').popup('push', null, function(data) {
+                // 所有调用者都能拿到数据
+                console.log(data);
+            });
         });
         
         // 使用modal方式打开
         $('#btn2').click(function() {
+            
             $('#popup1').popup(function() {
-                console.log('open');
+                console.log('oPen通常用来设置面板的初始数据的');
             }, function(data) {
+                // 所有调用者都能拿到数据
                 console.log('参数收到了，值是：' + data);
             });
         });
@@ -75,6 +78,8 @@
         
         // 关闭
         $('#closeButton').click(function() {
+            // 关闭时数据共享
+            $('#popup1').setPopupData('传递参数收到了吗？');
             $('#popup1').closePopup();
         });
     });

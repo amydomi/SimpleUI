@@ -157,4 +157,15 @@
 
 
     });
-})($);
+})(Zepto);
+
+
+;(function($) {
+    
+    // create data key
+    $.createDatakey = function(name) {
+		var d = new Date();
+		return name + '_' + (Math.floor(Math.random() * 100) + 999) + d.getDate() + d.getHours() + d.getMinutes() + d.getSeconds() + (Math.floor(Math.random() * 100) + 999);
+	}
+    
+})(Zepto);
