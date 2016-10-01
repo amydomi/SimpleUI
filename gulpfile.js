@@ -47,7 +47,6 @@ gulp.task('build-zepto', function() {
 		'./node_modules/zepto/src/form.js',
 		'./node_modules/zepto/src/fx.js',
 		'./node_modules/zepto/src/fx_methods.js',
-        './src/js/zepto_extends.js',
 		'./node_modules/zepto/src/selector.js',
 //		'./node_modules/zepto/src/touch.js',
 		'./node_modules/zepto/src/stack.js'
@@ -64,6 +63,7 @@ gulp.task('build-zepto', function() {
 // 编译、压缩SimpleUI js基础组件
 gulp.task('build-simpleui', function() {
 	gulp.src([
+		'./src/js/zepto_extends.js',
         './src/js/fastclick.js',    // 使用fastclick全程替换zepto的touch
         './src/js/doT.js',
 		'./src/js/base/browser.js',
