@@ -66,7 +66,6 @@ gulp.task('build-simpleui', function() {
 		'./src/js/zepto_extends.js',
         './src/js/fastclick.js',    // 使用fastclick全程替换zepto的touch
         './src/js/doT.js',
-        './src/js/iscroll-lite.js',
 		'./src/js/base/browser.js',
         './src/js/base/animate.js',
         './src/js/base/dialog.js',
