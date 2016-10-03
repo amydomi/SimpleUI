@@ -48,7 +48,7 @@ gulp.task('build-zepto', function() {
 		'./node_modules/zepto/src/fx.js',
 		'./node_modules/zepto/src/fx_methods.js',
 		'./node_modules/zepto/src/selector.js',
-//		'./node_modules/zepto/src/touch.js',
+		'./node_modules/zepto/src/touch.js',
 		'./node_modules/zepto/src/stack.js'
 	])
     .pipe(concat({ path: 'zepto.js'}))
@@ -64,8 +64,9 @@ gulp.task('build-zepto', function() {
 gulp.task('build-simpleui', function() {
 	gulp.src([
 		'./src/js/zepto_extends.js',
-        './src/js/fastclick.js',    // 使用fastclick全程替换zepto的touch
+        './src/js/fastclick.js',
         './src/js/doT.js',
+		'./src/js/iscroll-probe.js',
 		'./src/js/base/browser.js',
         './src/js/base/animate.js',
         './src/js/base/dialog.js',
