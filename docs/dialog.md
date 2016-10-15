@@ -19,6 +19,7 @@
 功能描述：模拟原生window.alert，有一个确定按钮。
 
 ```javascript
+   $.alert(text, title, buttons, onOk);
    $.alert(text, title, onOk);
    $.alert(text, onOk);
    $.alert(config);
@@ -27,13 +28,16 @@
 	@param
 	text(内容): string
 	title(标题): string | undefined
+	buttons(按钮提示文本): array | undefined  默认:['确定']
 	onOk(确定事件): function | undefined
 	config(上述配置综合): object
+			按钮文本不使用buttons: okVal: '确定'
 
 ##### Confirm
 功能描述：模拟原生window.confirm，有取消和确定按钮。
 
 ```javascript
+   $.confirm(text, title, buttons, onOk, onCancel);
    $.confirm(text, title, onOk, onCancel);
    $.confirm(text, onOk, onCancel);
    $.confirm(config);
@@ -42,9 +46,11 @@
 	@param
 	text(内容): string
 	title(标题): string | undefined
+	buttons(按钮提示文本): array | undefined   默认:['取消', '确定']
 	onOk(确定事件): function | undefined
 	onCancel(取消事件): function | undefined
 	config(上述配置综合): object
+			按钮文本不使用buttons：okVal: '确定', canVal: 取消
 
 ##### Prompt
 功能描述：模拟原生window.prompt，有取消和确定和一个输入框。

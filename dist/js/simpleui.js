@@ -3568,19 +3568,29 @@ $(function() {
         
     }
     
-    $.alert = function(text, title, onOk) {
+    $.alert = function(text, title, buttons, onOk) {
         var config;
         if(typeof text == 'object') {
             config = text;
         } else {
             if(typeof title == 'function') {
                 onOk = arguments[1];
+                buttons = [_defaults.okVal];
                 title = undefined;
+            } else if(title instanceof Array) {
+                buttons = arguments[1];
+                onOk = arguments[2];
+                title = undefined;
+            } else if(typeof buttons == 'function') {
+                onOk = arguments[2];
+                buttons = [_defaults.okVal];
             }
+            
             config = {
                 text: text,
                 title: title,
-                onOk: onOk
+                onOk: onOk,
+                okVal: buttons[0] ? buttons[0] : _defaults.okVal
             }
         }
         
@@ -3588,7 +3598,7 @@ $(function() {
             text: config.text,
             title: config.title,
             buttons: [{
-                text: _defaults.okVal,
+                text: config.okVal,
                 onClick: config.onOk
             }]
         });
@@ -3597,7 +3607,7 @@ $(function() {
         });
     }
     
-    $.confirm = function(text, title, onOk, onCancel) {
+    $.confirm = function(text, title, buttons, onOk, onCancel) {
         var config;
         if(typeof text == 'object') {
             config = text;
@@ -3606,13 +3616,25 @@ $(function() {
                 onOk = arguments[1];
                 onCancel = arguments[2];
                 title = undefined;
+                buttons = [_defaults.cancelVal, _defaults.okVal];
+            } else if(title instanceof Array) {
+                buttons = arguments[1];
+                onOk = arguments[2];
+                onCancel = arguments[3];
+                title = undefined;
+            } else if(typeof buttons == 'function') {
+                onOk = arguments[2];
+                onCancel = arguments[3];
+                buttons = [_defaults.cancelVal, _defaults.okVal];
             }
             
             config = {
                 text: text,
                 title: title,
                 onOk: onOk,
-                onCancel: onCancel
+                onCancel: onCancel,
+                cancelVal: buttons[0] ? buttons[0] : _defaults.cancelVal,
+                okVal: buttons[1] ? buttons[1] : _defaults.okVal
             }
         }
         
@@ -3620,10 +3642,10 @@ $(function() {
             text: config.text,
             title: config.title,
             buttons: [{
-                text: _defaults.cancelVal,
+                text: config.cancelVal,
                 onClick: config.onCancel
             }, {
-                text: _defaults.okVal,
+                text: config.okVal,
                 onClick: config.onOk
             }]
         });
