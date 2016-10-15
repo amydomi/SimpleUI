@@ -24,7 +24,7 @@
                '</div>' +
                '<div class="sui-dialog-ft">' +
                '{{~it.buttons:v}}' +
-                '<button>{{=v.text}}</button>' +
+                '<button{{?v.className}} class="{{=v.className}}"{{?}}>{{=v.text}}</button>' +
                '{{~}}' +
                '</div>' +
            '</div>';
@@ -149,6 +149,7 @@
             text: config.text,
             title: config.title,
             buttons: [{
+                className: 'sui-dialog-cancel',
                 text: config.cancelVal,
                 onClick: config.onCancel
             }, {

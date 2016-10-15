@@ -83,7 +83,7 @@
 	text(内容): string
 	html(附加的HTML，显示在text下面): string
 	autoClose(自动关闭): boolean
-	buttons(按钮组): array[{text(文本): string, onClick(点击事件): function}, ...]
+	buttons(按钮组): array[{text(文本): string, className(样式): string, onClick(点击事件): function}, ...]
 
 当 autoClose 设为false，需要手动调用此函数进行关闭。
 
