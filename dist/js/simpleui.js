@@ -3590,7 +3590,7 @@ $(function() {
                 text: text,
                 title: title,
                 onOk: onOk,
-                okVal: buttons[0] ? buttons[0] : _defaults.okVal
+                okVal: buttons && buttons[0] ? buttons[0] : _defaults.okVal
             }
         }
         
@@ -3633,8 +3633,8 @@ $(function() {
                 title: title,
                 onOk: onOk,
                 onCancel: onCancel,
-                cancelVal: buttons[0] ? buttons[0] : _defaults.cancelVal,
-                okVal: buttons[1] ? buttons[1] : _defaults.okVal
+                cancelVal: buttons && buttons[0] ? buttons[0] : _defaults.cancelVal,
+                okVal: buttons && buttons[1] ? buttons[1] : _defaults.okVal
             }
         }
         
