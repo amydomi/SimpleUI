@@ -118,15 +118,17 @@
     }
     
     // 自动初始化
-    $('.sui-popup-container,.sui-mask,.sui-popup-modal').css('display', 'none');
-    $('.open-popup').on('click', function() {
-        $('#' + $(this).data("target")).popup();
-    });
-    $('.close-popup').on('click', function(e) {
-        $('#' + $(this).data("target")).closePopup();
-    });
-    $('.sui-mask').on('click', function() {
-        $(this).parent().closePopup();
+    $(function() {
+        $('.sui-popup-container,.sui-mask,.sui-popup-modal').css('display', 'none');
+        $('.open-popup').on('click', function() {
+            $('#' + $(this).data("target")).popup();
+        });
+        $('.close-popup').on('click', function(e) {
+            $('#' + $(this).data("target")).closePopup();
+        });
+        $('.sui-mask').on('click', function() {
+            $(this).parent().closePopup();
+        });
     });
     
     var stY = 0, etY = 0;
