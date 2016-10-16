@@ -3879,30 +3879,34 @@ $(function() {
     }
     
     var hide = function() {
-        clearTimeout(_timer);
-        var toast = $('.sui-toast');
-        var mask = $('.sui-mask-transparent');
-        
-        if(mask.hasClass('sui-mask-visible')) {
-            mask.transitionEnd(function() {
-                $(this).remove();
-            }).removeClass('sui-mask-visible');
-        } else {
-            mask.remove();
-        }
-        
-        if(toast.hasClass('sui-toast-visible')) {
-            $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
-            toast.transitionEnd(function(){
-                $(this).remove();
-            }).removeClass('sui-toast-visible');
-        } else {
-            toast.transitionEnd(function(){
-                $(this).remove();
-            }).removeClass('sui-toast-content-visible');
-        }
-        if($.isFunction(_destroy)) _destroy();
-        _destroy = undefined;
+		clearTimeout(_timer);
+		var toast = $('.sui-toast');
+		var mask = $('.sui-mask-transparent');
+		toast.remove();
+        mask.remove();
+        $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
+        /*
+		if(mask.hasClass('sui-mask-visible')) {
+			mask.transitionEnd(function() {
+				$(this).remove();
+			}).removeClass('sui-mask-visible');
+		} else {
+			mask.remove();
+		}
+		
+		if(toast.hasClass('sui-toast-visible')) {
+			$('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
+			toast.transitionEnd(function(){
+				$(this).remove();
+			}).removeClass('sui-toast-visible');
+		} else {
+			toast.transitionEnd(function(){
+				$(this).remove();
+			}).removeClass('sui-toast-content-visible');
+		}
+        */
+		if($.isFunction(_destroy)) _destroy();
+		_destroy = undefined;
     }
     
     $.toast = function(text, style, duration, destroy) {
