@@ -7,7 +7,7 @@ Popup组件需要使用HTML + Js方式才能完整运行起来。
 ```html
 <!--popup start-->
 <div id="popup1" class="sui-popup-container">
-	<div class="sui-mask"></div>
+	<div class="sui-popup-mask"></div>
 	<div class="sui-popup-modal">
 		<!--内容开始-->
 		具体的内容放在这里...
@@ -18,7 +18,7 @@ Popup组件需要使用HTML + Js方式才能完整运行起来。
 
 <!--popup start-->
 <div id="popup2" class="sui-popup-container">
-	<div class="sui-mask"></div>
+	<div class="sui-popup-mask"></div>
 	<div class="sui-popup-modal">
 		<!--内容开始-->
 		具体的内容放在这里...
