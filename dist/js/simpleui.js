@@ -4015,7 +4015,7 @@ $(function() {
         if(!flag) effect = 'modal';
         
         popup = $(popup);
-        var mask = popup.children('.sui-mask');
+        var mask = popup.children('.sui-popup-mask');
         var modal = popup.children('.sui-popup-modal');
         var zIndex = $('.sui-popup-on');
         zIndex = zIndex ? zIndex.length + 8000 : 8000;
@@ -4048,7 +4048,7 @@ $(function() {
 
         // 动画效果
         setTimeout(function() {
-            mask.addClass('sui-mask-visible');
+            mask.addClass('sui-popup-mask-visible');
             modal.addClass(_effectList[effect][1]);
         }, 2);
         
@@ -4063,11 +4063,11 @@ $(function() {
     
     $.closePopup = function(popup, callback) {
         popup = $(popup);
-        var mask = popup.children('.sui-mask');
+        var mask = popup.children('.sui-popup-mask');
         var modal = popup.children('.sui-popup-modal');
         var key = popup.data('key');
         
-        mask.removeClass('sui-mask-visible').transitionEnd(function(){
+        mask.removeClass('sui-popup-mask-visible').transitionEnd(function(){
             $(this).css('display', 'none');
         }, false);
         
@@ -4108,14 +4108,14 @@ $(function() {
     
     // 自动初始化
     $(function() {
-        $('.sui-popup-container,.sui-mask,.sui-popup-modal').css('display', 'none');
+        $('.sui-popup-container,.sui-popup-mask,.sui-popup-modal').css('display', 'none');
         $('.open-popup').on('click', function() {
             $('#' + $(this).data("target")).popup();
         });
         $('.close-popup').on('click', function(e) {
             $('#' + $(this).data("target")).closePopup();
         });
-        $('.sui-mask').on('click', function() {
+        $('.sui-popup-mask').on('click', function() {
             $(this).parent().closePopup();
         });
     });

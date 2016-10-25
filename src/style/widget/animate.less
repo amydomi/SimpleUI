@@ -1,5 +1,5 @@
 // mask
-.sui-mask,.sui-mask-transparent {
+.sui-mask,.sui-popup-mask,.sui-mask-transparent {
     transition-property: all;
     transition-duration: .3s;
     opacity: 0;
@@ -7,7 +7,7 @@
     display: none;
 }
 
-.sui-mask-visible {
+.sui-mask-visible,.sui-popup-mask-visible {
     opacity: 1;
     display: block;
     transform: translateZ(0);
@@ -73,7 +73,7 @@
     height: auto !important;
 }
 .sui-popup-effect-menu {
-    width: 60% !important;
+    width: 70% !important;
     transform: translateZ(0) translateX(-100%);
 }
 .sui-popup-effect-plate,
