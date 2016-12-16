@@ -15,6 +15,7 @@
         <li id="successTester">Success</li>
         <li id="errorTester">Error</li>
         <li id="loadingTester">Loading</li>
+        <li id="initloadingTester">initLoading</li>
         <li id="textTester">Text</li>
    </ul>
     
@@ -40,6 +41,15 @@
             setTimeout(function() {
                 $.hideLoading();
             }, 3000);
+        });
+		
+		// 初始化加载 (不透明)
+        $('#initloadingTester').on('click', function() {
+            $.initLoading();
+            // 3秒自动关闭
+            setTimeout(function() {
+                $.hideLoading();
+            }, 30000);
         });
         
         // 纯文本

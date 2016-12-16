@@ -58,8 +58,10 @@ Toast组件完全是封装成JS插件方式调用。
 1.在屏幕中心位置显示一个正方形的提示框，Icon为一个不停旋转的菊花。<br/>
 2.不会自动消失，需要手动调用代码关闭。<br/>
 3.默认文本显示：数据加载中。
+4.initLoading 和 showLoading 的区别: initLoading主要用在页面初始化时加载数据，会将整个页面遮挡起来，防数据不全显示体验不好。
 ```javascript
 	$.showLoading(text);
+	$.initLoading(text);
 ```
 	@param
 	text(内容，默认：操作成功): string

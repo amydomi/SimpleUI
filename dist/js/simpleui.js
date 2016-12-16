@@ -3855,6 +3855,11 @@ $(function() {
         var mask = $('<div class="sui-mask-transparent"></div>').appendTo(document.body);
         var toast = template.appendTo(document.body).css('display', 'block');
         
+		if(params.transparent) {
+			
+			mask.addClass('sui-mask-opacity');
+		}
+		
         if(params.style != 'text') {
             mask.css('display', 'block');
             $('body').addClass('forbid-scroll').on('touchmove', function(event){
@@ -3978,13 +3983,23 @@ $(function() {
         }
         show(config, false);
     }
+	
+	$.initLoading = function(text) {
+		var config = {
+            text: text || '数据加载中',
+            style: 'loading',
+			transparent: true
+        }
+        show(config, false, true);
+	}
     
     $.hideLoading = function() {
         hide();
     }
     
     _defaults = $.toast.prototype.defaults = {
-        duration: 2000
+        duration: 2000,
+		transparent: false
     }
 })(Zepto);
 
