@@ -1,7 +1,7 @@
 /*!
  * SimpleUI v0.0.10
  * URL: https://github.com/dusksoft/SimpleUI#readme
- * (c) 2016 by huanghai. All rights reserved.
+ * (c) 2017 by huanghai. All rights reserved.
  * Licensed under the MIT license
  */
 /* Zepto plugin : slide transition v1.0 */
