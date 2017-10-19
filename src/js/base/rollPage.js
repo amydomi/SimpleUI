@@ -8,8 +8,8 @@
 
     var rollPage = function(el, callback) {
         var element = $(el);
-        var scrollContainer = (el[0].tagName.toUpperCase() === "BODY" ? $(document) : $(el));
-        scrollContainer.on('scroll', function() {
+        // var scrollContainer = (el[0].tagName.toUpperCase() === "BODY" ? $(document) : $(el));
+        $(window).on('scroll', function() {
             var offset = element.outerHeight() - ($(window).height() + element.scrollTop());
             if(offset <= 20) {
                 callback();
@@ -18,8 +18,8 @@
     }
     
     var destroy = function(el) {
-        var scrollContainer = (el[0].tagName.toUpperCase() === "BODY" ? $(document) : $(el));
-        scrollContainer.off('scroll');
+        // var scrollContainer = (el[0].tagName.toUpperCase() === "BODY" ? $(document) : $(el));
+        $(window).off('scroll');
     }
     
     $.fn.rollPage = function(config, callback) {
