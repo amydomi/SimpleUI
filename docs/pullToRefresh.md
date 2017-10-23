@@ -16,7 +16,7 @@
 
 ##### javascript
 监听pull-to-refresh事件
-```javascript
+```js
 $(function() {
 	$(document.body).pullToRefresh().on("pull-to-refresh", function() {
 		console.log('开始刷新...');
