@@ -63,7 +63,10 @@
     
     $.closeDialog = function() {
         if($('body').hasClass('forbid-scroll')) {
-            $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
+            // 启用下拉刷新，不锁定滚动事件
+            if(!$('body').hasClass('sui-pull-to-refresh')) {
+                $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
+            }
         }
         
         $('.sui-mask').transitionEnd(function() {
@@ -109,9 +112,12 @@
                 onClick: config.onOk
             }]
         });
-        $('body').addClass('forbid-scroll').on('touchmove', function(event){
-            event.preventDefault();
-        });
+        // 启用下拉刷新，不锁定滚动事件
+        if(!$('body').hasClass('sui-pull-to-refresh')) {
+            $('body').addClass('forbid-scroll').on('touchmove', function(event){
+                event.preventDefault();
+            });
+        }
     }
     
     $.confirm = function(text, title, buttons, onOk, onCancel) {
@@ -157,9 +163,12 @@
                 onClick: config.onOk
             }]
         });
-        $('body').addClass('forbid-scroll').on('touchmove', function(event){
-            event.preventDefault();
-        });
+        // 启用下拉刷新，不锁定滚动事件
+        if(!$('body').hasClass('sui-pull-to-refresh')) {
+            $('body').addClass('forbid-scroll').on('touchmove', function(event){
+                event.preventDefault();
+            });
+        }
     }
     
     $.prompt = function(title, text, onOk, onCancel, placeholder, input) {

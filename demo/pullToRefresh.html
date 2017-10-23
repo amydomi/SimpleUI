@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SimpleUI</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../dist/style/simpleui.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body style="background-color:white">
+    
+    <!--下拉刷新所需HTML-->
+    <div class="sui-pull-to-refresh-layer">
+        <div class='sui-pull-to-refresh-arrow'></div>
+        <div class='sui-pull-to-refresh-preloader'></div>
+        <div class="down">下拉刷新</div>
+        <div class="up">释放刷新</div>
+        <div class="refresh">正在刷新</div>
+    </div>
+   
+    
+    <div id="list" class="sui-mlr15"><p>第1页，第1条数据。</p><p>第1页，第2条数据。</p><p>第1页，第3条数据。</p><p>第1页，第4条数据。</p><p>第1页，第5条数据。</p><p>第1页，第6条数据。</p><p>第1页，第7条数据。</p><p>第1页，第8条数据。</p><p>第1页，第9条数据。</p><p>第1页，第10条数据。</p><p>第1页，第11条数据。</p><p>第1页，第12条数据。</p><p>第1页，第13条数据。</p><p>第1页，第14条数据。</p><p>第1页，第15条数据。</p><p>第1页，第16条数据。</p><p>第1页，第17条数据。</p><p>第1页，第18条数据。</p><p>第1页，第19条数据。</p><p>第1页，第20条数据。</p><p>第1页，第21条数据。</p><p>第1页，第22条数据。</p><p>第1页，第23条数据。</p><p>第1页，第24条数据。</p><p>第1页，第25条数据。</p><p>第1页，第26条数据。</p><p>第1页，第27条数据。</p><p>第1页，第28条数据。</p><p>第1页，第29条数据。</p><p>第1页，第30条数据。</p></div>
+	
+	<script src="../dist/js/zepto.min.js"></script>
+    <script src="../dist/js/simpleui.min.js"></script>
+    <script>
+    $(function() {
+        $(document.body).pullToRefresh().on("pull-to-refresh", function() {
+             
+            //使用setTimeout只是为了模拟异步请求
+            setTimeout(function() {
+                $(document.body).pullToRefreshDone(); // 刷新完毕调用此方法关闭
+                $.toastSuccess('刷新成功。');
+            }, 2000);
+        });
+        
+    })
+
+    </script>
+</body>
+</html>

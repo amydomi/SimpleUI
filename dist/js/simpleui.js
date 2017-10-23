@@ -1,5 +1,5 @@
 /*!
- * SimpleUI v0.0.10
+ * SimpleUI v0.0.11
  * URL: https://github.com/dusksoft/SimpleUI#readme
  * (c) 2017 by huanghai. All rights reserved.
  * Licensed under the MIT license
@@ -3556,7 +3556,10 @@ $(function() {
     
     $.closeDialog = function() {
         if($('body').hasClass('forbid-scroll')) {
-            $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
+            // 启用下拉刷新，不锁定滚动事件
+            if(!$('body').hasClass('sui-pull-to-refresh')) {
+                $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
+            }
         }
         
         $('.sui-mask').transitionEnd(function() {
@@ -3602,9 +3605,12 @@ $(function() {
                 onClick: config.onOk
             }]
         });
-        $('body').addClass('forbid-scroll').on('touchmove', function(event){
-            event.preventDefault();
-        });
+        // 启用下拉刷新，不锁定滚动事件
+        if(!$('body').hasClass('sui-pull-to-refresh')) {
+            $('body').addClass('forbid-scroll').on('touchmove', function(event){
+                event.preventDefault();
+            });
+        }
     }
     
     $.confirm = function(text, title, buttons, onOk, onCancel) {
@@ -3650,9 +3656,12 @@ $(function() {
                 onClick: config.onOk
             }]
         });
-        $('body').addClass('forbid-scroll').on('touchmove', function(event){
-            event.preventDefault();
-        });
+        // 启用下拉刷新，不锁定滚动事件
+        if(!$('body').hasClass('sui-pull-to-refresh')) {
+            $('body').addClass('forbid-scroll').on('touchmove', function(event){
+                event.preventDefault();
+            });
+        }
     }
     
     $.prompt = function(title, text, onOk, onCancel, placeholder, input) {
@@ -3752,10 +3761,13 @@ $(function() {
             actionSheet.addClass('sui-actionsheet-visible');
         }, 0);
         
-        // 禁用滚动条
-        $('body').addClass('forbid-scroll').on('touchmove', function(event){
-            event.preventDefault();
-        });
+        // 启用下拉刷新，不锁定滚动事件
+        if(!$('body').hasClass('sui-pull-to-refresh')) {
+            // 禁用滚动条
+            $('body').addClass('forbid-scroll').on('touchmove', function(event){
+                event.preventDefault();
+            });
+        }
         
         // 事件
         $('.sui-actionsheet-button-group li').on('click', function() {
@@ -3777,7 +3789,10 @@ $(function() {
     }
     
     var hide = function(isCancel) {
-        $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
+        // 启用下拉刷新，不锁定滚动事件
+        if(!$('body').hasClass('sui-pull-to-refresh')) {
+            $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
+        }
         if($.isFunction(_onClose) && isCancel) {
             _onClose();
         }
@@ -3862,9 +3877,12 @@ $(function() {
 		
         if(params.style != 'text') {
             mask.css('display', 'block');
-            $('body').addClass('forbid-scroll').on('touchmove', function(event){
-                event.preventDefault();
-            });
+            // 启用下拉刷新，不锁定滚动事件
+            if(!$('body').hasClass('sui-pull-to-refresh')) {
+                $('body').addClass('forbid-scroll').on('touchmove', function(event){
+                    event.preventDefault();
+                });
+            }
         }
         
         // 动画
@@ -3889,7 +3907,10 @@ $(function() {
 		var mask = $('.sui-mask-transparent');
 		toast.remove();
         mask.remove();
-        $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
+        // 启用下拉刷新，不锁定滚动事件
+        if(!$('body').hasClass('sui-pull-to-refresh')) {
+            $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
+        }
         /*
 		if(mask.hasClass('sui-mask-visible')) {
 			mask.transitionEnd(function() {
@@ -4068,9 +4089,12 @@ $(function() {
         }, 2);
         
         if(!$('body').hasClass('forbid-scroll')) {
-            $('body').addClass('forbid-scroll').on('touchmove', function(event){
-                event.preventDefault();
-            });
+            // 启用下拉刷新，不锁定滚动事件
+            if(!$('body').hasClass('sui-pull-to-refresh')) {
+                $('body').addClass('forbid-scroll').on('touchmove', function(event){
+                    event.preventDefault();
+                });
+            }
         }
         
         return popup;
@@ -4106,7 +4130,10 @@ $(function() {
 
         popup.removeClass('sui-popup-on');
         if($('.sui-popup-on').length <= 0) {
-            $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
+            // 启用下拉刷新，不锁定滚动事件
+            if(!$('body').hasClass('sui-pull-to-refresh')) {
+                $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
+            }
         }
         
         return popup;
@@ -4182,9 +4209,10 @@ $(function() {
 
     var rollPage = function(el, callback) {
         var element = $(el);
-        // var scrollContainer = (el[0].tagName.toUpperCase() === "BODY" ? $(document) : $(el));
+        var top = 0;
+        if($('body').hasClass('sui-pull-to-refresh')) top = 50; // 去掉下拉刷新的距离
         $(window).on('scroll', function() {
-            var offset = element.outerHeight() - ($(window).height() + element.scrollTop());
+            var offset = element.outerHeight() - ($(window).height() + $(window).scrollTop()) - top;
             if(offset <= 20) {
                 callback();
             }
@@ -4192,7 +4220,6 @@ $(function() {
     }
     
     var destroy = function(el) {
-        // var scrollContainer = (el[0].tagName.toUpperCase() === "BODY" ? $(document) : $(el));
         $(window).off('scroll');
     }
     
@@ -4224,4 +4251,112 @@ $(function() {
         $(this).next('.sui-loading-wrap').remove();
     }
     
+})(Zepto);
+// pull-to-refresh.js
+// author: huanghai
+// date: 2017-10-23
+
+;(function($) {
+    "use strict";
+
+    $.support = (function() {
+        var support = {
+            touch: !!(('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch)
+        };
+        return support;
+    })();
+
+    $.getTouchPosition = function(e) {
+        e = e.originalEvent || e;
+        if (e.type === 'touchstart' || e.type === 'touchmove' || e.type === 'touchend') {
+            return {
+                x: e.targetTouches[0].pageX,
+                y: e.targetTouches[0].pageY
+            };
+        } else {
+            return {
+                x: e.pageX,
+                y: e.pageY
+            };
+        }
+    };
+
+    $.touchEvents = {
+        start: $.support.touch ? 'touchstart': 'mousedown',
+        move: $.support.touch ? 'touchmove': 'mousemove',
+        end: $.support.touch ? 'touchend': 'mouseup'
+    };
+
+    var PTR = function(el) {
+        this.container = $(el);
+        this.distance = 50;
+        this.attachEvents();
+    }
+
+    PTR.prototype.touchStart = function(e) {
+        if (this.container.hasClass("refreshing")) return;
+        var p = $.getTouchPosition(e);
+        this.start = p;
+        this.diffX = this.diffY = 0;
+    };
+
+    PTR.prototype.touchMove = function(e) {
+        if (this.container.hasClass("refreshing")) return;
+        if (!this.start) return false;
+        if (this.container.scrollTop() > 0) return;
+        var p = $.getTouchPosition(e);
+        this.diffX = p.x - this.start.x;
+        this.diffY = p.y - this.start.y;
+        if (this.diffY < 0) return;
+        this.container.addClass("touching");
+        e.preventDefault();
+        e.stopPropagation();
+        this.diffY = Math.pow(this.diffY, 0.8);
+        this.container.css("transform", "translate3d(0, " + this.diffY + "px, 0)");
+
+        if (this.diffY < this.distance) {
+            this.container.removeClass("pull-up").addClass("pull-down");
+        } else {
+            this.container.removeClass("pull-down").addClass("pull-up");
+        }
+    };
+    PTR.prototype.touchEnd = function() {
+        this.start = false;
+        if (this.diffY <= 0 || this.container.hasClass("refreshing")) return;
+        this.container.removeClass("touching");
+        this.container.removeClass("pull-down pull-up");
+        this.container.css("transform", "");
+        if (Math.abs(this.diffY) <= this.distance) {} else {
+            this.container.addClass("refreshing");
+            this.container.trigger("pull-to-refresh");
+        }
+    };
+
+    PTR.prototype.attachEvents = function() {
+        var el = this.container;
+        el.addClass("sui-pull-to-refresh");
+        el.on($.touchEvents.start, $.proxy(this.touchStart, this));
+        el.on($.touchEvents.move, $.proxy(this.touchMove, this));
+        el.on($.touchEvents.end, $.proxy(this.touchEnd, this));
+    };
+
+    var pullToRefresh = function(el) {
+        new PTR(el);
+    };
+
+    var pullToRefreshDone = function(el) {
+        $(el).removeClass("refreshing");
+    }
+
+    $.fn.pullToRefresh = function() {
+        return this.each(function() {
+            pullToRefresh(this);
+        });
+    }
+
+    $.fn.pullToRefreshDone = function() {
+        return this.each(function() {
+            pullToRefreshDone(this);
+        });
+    }
 })(Zepto);

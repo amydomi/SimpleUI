@@ -64,9 +64,12 @@
         }, 2);
         
         if(!$('body').hasClass('forbid-scroll')) {
-            $('body').addClass('forbid-scroll').on('touchmove', function(event){
-                event.preventDefault();
-            });
+            // 启用下拉刷新，不锁定滚动事件
+            if(!$('body').hasClass('sui-pull-to-refresh')) {
+                $('body').addClass('forbid-scroll').on('touchmove', function(event){
+                    event.preventDefault();
+                });
+            }
         }
         
         return popup;
@@ -102,7 +105,10 @@
 
         popup.removeClass('sui-popup-on');
         if($('.sui-popup-on').length <= 0) {
-            $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
+            // 启用下拉刷新，不锁定滚动事件
+            if(!$('body').hasClass('sui-pull-to-refresh')) {
+                $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
+            }
         }
         
         return popup;

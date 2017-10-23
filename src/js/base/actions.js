@@ -35,10 +35,13 @@
             actionSheet.addClass('sui-actionsheet-visible');
         }, 0);
         
-        // 禁用滚动条
-        $('body').addClass('forbid-scroll').on('touchmove', function(event){
-            event.preventDefault();
-        });
+        // 启用下拉刷新，不锁定滚动事件
+        if(!$('body').hasClass('sui-pull-to-refresh')) {
+            // 禁用滚动条
+            $('body').addClass('forbid-scroll').on('touchmove', function(event){
+                event.preventDefault();
+            });
+        }
         
         // 事件
         $('.sui-actionsheet-button-group li').on('click', function() {
@@ -60,7 +63,10 @@
     }
     
     var hide = function(isCancel) {
-        $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
+        // 启用下拉刷新，不锁定滚动事件
+        if(!$('body').hasClass('sui-pull-to-refresh')) {
+            $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
+        }
         if($.isFunction(_onClose) && isCancel) {
             _onClose();
         }

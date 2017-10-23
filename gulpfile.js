@@ -73,7 +73,8 @@ gulp.task('build-simpleui', function() {
         './src/js/base/actions.js',
         './src/js/base/toast.js',
         './src/js/base/popup.js',
-        './src/js/base/rollPage.js'
+        './src/js/base/rollPage.js',
+        './src/js/base/pull-to-refresh.js'
 	])
     .pipe(concat({ path: 'simpleui.js'}))
     .pipe(header(remark, { pkg : pkg } ))

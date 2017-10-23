@@ -41,9 +41,12 @@
 		
         if(params.style != 'text') {
             mask.css('display', 'block');
-            $('body').addClass('forbid-scroll').on('touchmove', function(event){
-                event.preventDefault();
-            });
+            // 启用下拉刷新，不锁定滚动事件
+            if(!$('body').hasClass('sui-pull-to-refresh')) {
+                $('body').addClass('forbid-scroll').on('touchmove', function(event){
+                    event.preventDefault();
+                });
+            }
         }
         
         // 动画
@@ -68,7 +71,10 @@
 		var mask = $('.sui-mask-transparent');
 		toast.remove();
         mask.remove();
-        $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
+        // 启用下拉刷新，不锁定滚动事件
+        if(!$('body').hasClass('sui-pull-to-refresh')) {
+            $('body').removeClass('forbid-scroll').off('touchmove'); // 启用滚动
+        }
         /*
 		if(mask.hasClass('sui-mask-visible')) {
 			mask.transitionEnd(function() {

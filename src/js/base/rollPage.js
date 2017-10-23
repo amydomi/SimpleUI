@@ -8,9 +8,10 @@
 
     var rollPage = function(el, callback) {
         var element = $(el);
-        // var scrollContainer = (el[0].tagName.toUpperCase() === "BODY" ? $(document) : $(el));
+        var top = 0;
+        if($('body').hasClass('sui-pull-to-refresh')) top = 50; // 去掉下拉刷新的距离
         $(window).on('scroll', function() {
-            var offset = element.outerHeight() - ($(window).height() + element.scrollTop());
+            var offset = element.outerHeight() - ($(window).height() + $(window).scrollTop()) - top;
             if(offset <= 20) {
                 callback();
             }
@@ -18,7 +19,6 @@
     }
     
     var destroy = function(el) {
-        // var scrollContainer = (el[0].tagName.toUpperCase() === "BODY" ? $(document) : $(el));
         $(window).off('scroll');
     }
     
