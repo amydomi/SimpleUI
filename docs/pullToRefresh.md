@@ -16,16 +16,16 @@
 
 ##### javascript
 监听pull-to-refresh事件
-```js
-$(function() {
-	$(document.body).pullToRefresh().on("pull-to-refresh", function() {
-		console.log('开始刷新...');
-		//使用setTimeout只是为了模拟异步请求
-		setTimeout(function() {
-			$(document.body).pullToRefreshDone(); // 刷新完毕调用此方法关闭
-			console.log('刷新成功。');
-		}, 2000);
-	});
-})
+```javascript
+	$(function() {
+		$(document.body).pullToRefresh().on("pull-to-refresh", function() {
+			console.log('开始刷新...');
+			//使用setTimeout只是为了模拟异步请求
+			setTimeout(function() {
+				$(document.body).pullToRefreshDone(); // 刷新完毕调用此方法关闭
+				console.log('刷新成功。');
+			}, 2000);
+		});
+	})
 
 [查看DEMO示例](https://dusksoft.github.io/SimpleUI/demo/pullToRefresh.html) | [返回文档首页](index.md)
