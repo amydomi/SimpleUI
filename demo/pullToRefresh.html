@@ -29,14 +29,13 @@
     <script>
     $(function() {
         $(document.body).pullToRefresh().on("pull-to-refresh", function() {
-             
+            console.log('开始刷新...');
             //使用setTimeout只是为了模拟异步请求
             setTimeout(function() {
                 $(document.body).pullToRefreshDone(); // 刷新完毕调用此方法关闭
-                $.toastSuccess('刷新成功。');
+                console.log('刷新成功。');
             }, 2000);
         });
-        
     })
 
     </script>
