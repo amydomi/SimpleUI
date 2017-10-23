@@ -13,6 +13,7 @@
 	<div class="up">释放刷新</div>
 	<div class="refresh">正在刷新</div>
 </div>
+```
 
 ##### javascript
 监听pull-to-refresh事件
@@ -27,5 +28,6 @@
 			}, 2000);
 		});
 	})
+```
 
 [查看DEMO示例](https://dusksoft.github.io/SimpleUI/demo/pullToRefresh.html) | [返回文档首页](index.md)
