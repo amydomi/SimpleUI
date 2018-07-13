@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dusksoft/SimpleUI.git"
+    "url": "git+https://github.com/seawongcn/SimpleUI.git"
   },
   "keywords": [
     "simpleui",
@@ -37,7 +37,7 @@
   "author": "huanghai",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dusksoft/SimpleUI/issues"
+    "url": "https://github.com/seawongcn/SimpleUI/issues"
   },
-  "homepage": "https://github.com/dusksoft/SimpleUI#readme"
+  "homepage": "https://github.com/seawongcn/SimpleUI#readme"
 }

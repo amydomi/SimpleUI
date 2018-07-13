@@ -9,7 +9,7 @@
 	蓝色		.sui-blue
 	绿色		.sui-green
 	灰色		.sui-gray
-[查看DEMO示例](https://dusksoft.github.io/SimpleUI/demo/widget/global/global-color.html) | [返回文档首页](index.md)
+[查看DEMO示例](https://seawongcn.github.io/SimpleUI/demo/widget/global/global-color.html) | [返回文档首页](index.md)
 
 ### 细边框线
 在手机上，经常会使用低于1px的细边框线，对这些边框线进行了一些封装。
@@ -23,7 +23,7 @@
 	右框线			.sui-border-r
 
 	四边边线			.sui-border
-[查看DEMO示例](https://dusksoft.github.io/SimpleUI/demo/widget/global/global-border.html) | [返回文档首页](index.md)
+[查看DEMO示例](https://seawongcn.github.io/SimpleUI/demo/widget/global/global-border.html) | [返回文档首页](index.md)
 
 ### 外边距
 通用的上下边距为20px， 左右边距为15px，对这些通用的边框线进行封装。<br/>
@@ -40,4 +40,4 @@
 	左边距15px + 右边距15px		  .sui-mlr15
 	上下20px + 左右15px			   .sui-m
 
-[查看DEMO示例](https://dusksoft.github.io/SimpleUI/demo/widget/global/global-margin.html) | [返回文档首页](index.md)
+[查看DEMO示例](https://seawongcn.github.io/SimpleUI/demo/widget/global/global-margin.html) | [返回文档首页](index.md)
