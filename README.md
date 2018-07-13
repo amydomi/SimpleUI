@@ -10,7 +10,7 @@ $ gulp
 ```
 
 ### preview
-![](https://dusksoft.github.io/SimpleUI/demo/img/qrcode.png)
+![](https://seawongcn.github.io/SimpleUI/demo/img/qrcode.png)
 
 ## Directory struct
 
