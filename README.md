@@ -1,5 +1,5 @@
 # SimpleUI
-一个简单易用的移动端Web前端框架
+一个简单易用的移动端Web前端组件库
 
 Compile：<br/>
 ```node
