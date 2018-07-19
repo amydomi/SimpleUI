@@ -1,6 +1,6 @@
 /*!
  * SimpleUI v0.0.11
- * URL: https://github.com/seawongcn/SimpleUI#readme
+ * URL: https://github.com/dusksoft/SimpleUI#readme
  * (c) 2017 by huanghai. All rights reserved.
  * Licensed under the MIT license
  */

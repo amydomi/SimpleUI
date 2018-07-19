@@ -30,4 +30,4 @@ $(function() {
 })
 ```
 
-[查看DEMO示例](https://seawongcn.github.io/SimpleUI/demo/pullToRefresh.html) | [返回文档首页](index.md)
+[查看DEMO示例](https://dusksoft.github.io/SimpleUI/demo/pullToRefresh.html) | [返回文档首页](index.md)

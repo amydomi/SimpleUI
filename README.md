@@ -10,12 +10,12 @@ $ gulp
 ```
 
 ### preview
-![](https://seawongcn.github.io/SimpleUI/demo/img/qrcode.png)
+![](https://dusksoft.github.io/SimpleUI/demo/img/qrcode.png)
 
 ## Directory struct
 
 - [demo/](demo/)
-    + 使用示例&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([预览](https://seawongcn.github.io/SimpleUI/demo/index.html))
+    + 使用示例&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([预览](https://dusksoft.github.io/SimpleUI/demo/index.html))
 
 - [dist/](dist/)
     + 发布文件

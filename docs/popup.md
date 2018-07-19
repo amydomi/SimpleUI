@@ -149,4 +149,4 @@ html方式展开
 ```
 组件自动为 class="close-popup" 绑定事件，并且隐藏 popup1 面板
 
-[查看DEMO示例](https://seawongcn.github.io/SimpleUI/demo/popup.html) | [返回文档首页](index.md)
+[查看DEMO示例](https://dusksoft.github.io/SimpleUI/demo/popup.html) | [返回文档首页](index.md)
