@@ -64,7 +64,6 @@ gulp.task('build-zepto', function() {
 gulp.task('build-simpleui', function() {
 	gulp.src([
 		'./src/js/zepto_extends.js',
-        './src/js/fastclick.js',
         './src/js/doT.js',
 		'./src/js/iscroll-probe.js',
 		'./src/js/base/browser.js',
