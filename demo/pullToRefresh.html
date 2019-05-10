@@ -28,6 +28,7 @@
     <script src="../dist/js/simpleui.min.js"></script>
     <script>
     $(function() {
+		// 注意： 下拉刷新和$.hideLoading()发生冲突，使用下拉刷新的地方不要使用$.hideLoading()
         $(document.body).pullToRefresh().on("pull-to-refresh", function() {
             console.log('开始刷新...');
             //使用setTimeout只是为了模拟异步请求

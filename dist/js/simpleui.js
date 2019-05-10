@@ -3447,6 +3447,7 @@ if ( typeof module != 'undefined' && module.exports ) {
     }
 
     PTR.prototype.touchStart = function(e) {
+		if($(window).scrollTop() > 0) return;
         if (this.container.hasClass("refreshing")) return;
         var p = $.getTouchPosition(e);
         this.start = p;
@@ -3454,6 +3455,7 @@ if ( typeof module != 'undefined' && module.exports ) {
     };
 
     PTR.prototype.touchMove = function(e) {
+		if($(window).scrollTop() > 0) return;
         if (this.container.hasClass("refreshing")) return;
         if (!this.start) return false;
         if (this.container.scrollTop() > 0) return;
@@ -3474,6 +3476,7 @@ if ( typeof module != 'undefined' && module.exports ) {
         }
     };
     PTR.prototype.touchEnd = function() {
+		if($(window).scrollTop() > 0) return;
         this.start = false;
         if (this.diffY <= 0 || this.container.hasClass("refreshing")) return;
         this.container.removeClass("touching");
