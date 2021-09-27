@@ -10,12 +10,12 @@ $ gulp
 ```
 
 ### preview
-![](https://dusksoft.github.io/SimpleUI/demo/img/qrcode.png)
+![](https://amydomi.github.io/SimpleUI/demo/img/qrcode.png)
 
 ## Directory struct
 
 - [demo/](demo/)
-    + 使用示例&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([预览](https://dusksoft.github.io/SimpleUI/demo/index.html))
+    + 使用示例&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([预览](https://amydomi.github.io/SimpleUI/demo/index.html))
 
 - [dist/](dist/)
     + 发布文件
@@ -32,4 +32,4 @@ MIT License (http://opensource.org/licenses/MIT)
 ## Contact me
 
 QQ: 654706160<br/>
-Email: dusksoft@qq.com
+Email: amydomi@qq.com
