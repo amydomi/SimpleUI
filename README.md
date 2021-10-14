@@ -29,7 +29,7 @@ $ gulp
 ## License
 MIT License (http://opensource.org/licenses/MIT)
 
-## Contact me
+## Contact me 
 
 QQ: 654706160<br/>
 Email: amydomi@qq.com
